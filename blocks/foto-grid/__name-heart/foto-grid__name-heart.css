@@ -1,0 +1,8 @@
+.foto-grid__name-heart {
+ width: 22px;
+ height: 19px;
+ background-image: url(../../../images/heart.jpg);
+}
+.foto-grid__name-heart:hover{
+   cursor: pointer;
+}

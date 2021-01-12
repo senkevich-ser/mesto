@@ -1,0 +1,11 @@
+.lead__pluse{
+  width:22px;
+  height:22px;
+  background:
+    linear-gradient(#fff,#fff),
+    linear-gradient(#fff,#fff),
+    #000;
+  background-position:center;
+  background-size: 100% 2px,2px 100%; /*thickness = 2px, length = 50% (25px)*/
+  background-repeat:no-repeat;  
+}

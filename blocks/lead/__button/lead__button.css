@@ -1,0 +1,18 @@
+.button {
+  display: flex;
+  width: 150px;
+  height: 50px;
+  outline: solid white 1px;
+  background-color: #000000;
+  border-radius: 2px;
+  justify-content: center;
+  align-items: center;
+}
+.button:hover{
+   cursor: pointer;
+}
+@media (max-width:1080px) {
+ .button{  
+ width: 282px; 
+ } 
+}
