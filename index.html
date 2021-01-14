@@ -24,7 +24,7 @@
           <div class="lead__wrapper-titles">
             <div class="lead__wrapper-title">
               <h1 class="lead__title">Жак-Ив Кусто</h1>
-              <div class="lead__vector opacity">&#9998;</div>
+              <div class="lead__pencil opacity"></div>
             </div>
             <p class="lead__subtitle margin">Исследователь океана</p>
           </div>
@@ -37,12 +37,12 @@
         <div class="foto-grid__card">
           <img
             src="./images/karachaevsk.jpg"
-            alt="Фото церкви в Карачаевске"
+            alt="Фото церкви в Карачаево-Черкессии"
             class="foto-grid__item"
           />
           <div class="foto-grid__name">
-            <div class="foto-grid__name-title">Карачаевск</div>
-            <div class="foto-grid__name-heart opacity"></div>
+            <div class="foto-grid__name-title">Карачаево-Черкессия</div>
+            <div class="foto-grid__name-heart  opacity"></div>
           </div>
         </div>
         <div class="foto-grid__card">
@@ -70,7 +70,7 @@
         <div class="foto-grid__card">
           <img
             src="./images/karachaevsk.jpg"
-            alt="Фото церкви в Карачаевске"
+            alt="Фото церкви в Карачаево-Черкессии"
             class="foto-grid__item"
           />
           <div class="foto-grid__name">
@@ -102,8 +102,20 @@
         </div>
       </section>
     </main>
+    <div class="popup">
+      <form class="popup__container">
+        <a href="#" class="popup__close opacity"></a>
+        <h3 class="popup__title">Редактировать профиль</h3>
+          <input type="text" value=" " placeholder=" " class="popup__input-text popup__input-text_type_name">
+          <input type="text" value=" " placeholder=" " class="popup__input-text popup__input-text_type_explorer">
+          <button type="submit" class="opacity popup__submit-btn popup__submit-btn_action_add">
+            Сохранить
+          </button>
+        </form>
+    </div>
     <footer class="footer wrapper">
       <p class="footer__copyright margin">&copy; 2020. Mesto Russia</p>
     </footer>
+    <script src="script.js"></script>
   </body>
 </html>

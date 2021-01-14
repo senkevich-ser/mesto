@@ -1,0 +1,17 @@
+.popup__input-text {
+   width: 358px;
+   height: 40px;
+   border: none;
+   border-bottom: 1px solid rgb(0,0,0,0.2);
+   color: #000000;
+}
+@media(max-width: 570px){
+ .popup__input-text{
+  width:290px;   
+ }   
+}
+@media(max-width: 470px){
+ .popup__input-text{
+  width:238px;   
+ }   
+}
