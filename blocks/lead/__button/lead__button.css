@@ -4,9 +4,12 @@
   height: 50px;
   outline: solid white 1px;
   background-color: #000000;
+  background-image: url(../../../images/cross.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
   border-radius: 2px;
-  justify-content: center;
-  align-items: center;
+  border: black solid 15px;
 }
 
 @media (max-width:1080px) {
