@@ -2,8 +2,6 @@
   position: relative;
   top: -20%;
   left: 57%;
-  height: 20%;
-  width: 20%;
   width: 32px;
   height: 32px;
 }
@@ -33,8 +31,8 @@
 }
 @media (max-width: 570px) {
   .popup__close {
-   top: -16%;
-   left: 56%;
+    top: -16%;
+    left: 56%;
   }
 }
 @media (max-width: 470px) {
@@ -46,7 +44,7 @@
 }
 @media (max-width: 470px) {
   .popup__close {
-   top: -20%;
-   left: 49%;
+    top: -20%;
+    left: 49%;
   }
 }
