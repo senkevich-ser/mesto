@@ -15,7 +15,7 @@ function closePopup() {
   popup.classList.remove("popup_opened");
 }
 profileEditButton.addEventListener("click", function () {
-  openPopap();
+  openPopup();
   inputName.value = leadElementInitial.textContent;
   inputExplorer.value = leadElementExplorer.textContent;
 });
