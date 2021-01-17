@@ -8,7 +8,7 @@ let popup = document.querySelector(".popup");
 let submitButton = document.querySelector(".popup__submit-btn");
 let formElement = document.querySelector(".popup__inputs");
 
-function openPopap() {
+function openPopup() {
   popup.classList.add("popup_opened");
 }
 function closePopup() {
