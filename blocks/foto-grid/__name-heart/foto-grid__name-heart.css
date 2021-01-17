@@ -3,6 +3,11 @@
   min-height: 19px;
   background-image: url(../../../images/heart.svg);
   border: none;
+  background-position: center;
+  background-size: cover;
+  background-color: #ffffff;
+  padding: 0;
+  margin: 0;
 }
 .foto-grid__name-heart:hover {
   opacity: 0.5;
