@@ -24,12 +24,10 @@ crossClosePopup.addEventListener("click", function () {
   closePopup();
 });
 
-submitButton.addEventListener("click", function () {
-  closePopup();
-});
 function handleFormSubmit(evt) {
   evt.preventDefault();
   leadElementInitial.textContent = inputName.value;
   leadElementExplorer.textContent = inputExplorer.value;
+  closePopup();
 }
 formElement.addEventListener("submit", handleFormSubmit);
