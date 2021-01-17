@@ -3,6 +3,17 @@
   height: 50px;
   color: #ffffff;
   background-color: #000000;
+  margin: 48px 0 0;
+  border: none;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+}
+.popup__submit-btn:hover {
+  opacity: 0.8;
+  transition-duration: 0.5s;
+  cursor: pointer;
 }
 @media (max-width: 570px) {
   .popup__submit-btn {

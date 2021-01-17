@@ -1,4 +1,4 @@
-.button {
+.lead__button {
   display: flex;
   width: 150px;
   height: 50px;
@@ -12,8 +12,8 @@
   border: black solid 15px;
 }
 
-@media (max-width:1080px) {
- .button{  
- width: 282px; 
- } 
+@media (max-width: 1080px) {
+  .lead__button {
+    width: 282px;
+  }
 }

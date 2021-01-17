@@ -1,132 +1,97 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="author" content="Сенкевич Сергей" />
-    <meta
-      name="description"
-      content="проектная работа №4
-  Сергей Сенкевич на Яндекс Практикуме"
-    />
-    <link rel="stylesheet" href="./pages/index.css" />
-    <title>Жак-Ив Кусто</title>
-  </head>
 
-  <body class="root">
-    <header class="header wrapper">
-      <div class="header__logo"></div>
-    </header>
-    <main class="content">
-      <section class="lead">
-        <div class="lead__titles">
-          <img class="lead__image" src="./images/Jac-Yv.jpg" alt="Фото Жака" />
-          <div class="lead__wrapper-titles">
-            <div class="lead__wrapper-title">
-              <h1 class="lead__title">Жак-Ив Кусто</h1>
-              <div class="lead__pencil opacity"></div>
-            </div>
-            <p class="lead__subtitle margin">Исследователь океана</p>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="author" content="Сенкевич Сергей" />
+  <meta name="description" content="проектная работа №4
+  Сергей Сенкевич на Яндекс Практикуме" />
+  <link rel="stylesheet" href="./pages/index.css" />
+  <title>Жак-Ив Кусто</title>
+</head>
+
+<body class="root">
+  <header class="header wrapper">
+    <div class="header__logo"></div>
+  </header>
+  <main class="content">
+    <section class="lead">
+      <div class="lead__titles">
+        <img class="lead__image" src="./images/Jac-Yv.jpg" alt="Фото Жака" />
+        <div class="lead__wrapper-titles">
+          <div class="lead__wrapper-title">
+            <h1 class="lead__title title-cutter">Жак-Ив Кусто</h1>
+            <button aria-label="Внести изменения в форму" type="button" class="lead__pencil opacity"></button>
           </div>
+          <p class="lead__subtitle title-cutter margin">Исследователь океана</p>
         </div>
-        <button class="button opacity"></button>
-      </section>
-      <section class="foto-grid" aria-label="Фото красивых мест">
-        <div class="foto-grid__card">
-          <img
-            src="./images/karachaevsk.jpg"
-            alt="Фото церкви в Карачаево-Черкессии"
-            class="foto-grid__item"
-          />
-          <div class="foto-grid__name">
-            <div class="foto-grid__name-title">Карачаево-Черкессия</div>
-            <div class="foto-grid__name-heart opacity"></div>
-          </div>
+      </div>
+      <button aria-label="Добавить" type="button" class="lead__button opacity"></button>
+    </section>
+    <section class="foto-grid" aria-label="Фото красивых мест">
+      <div class="foto-grid__card">
+        <img src="./images/karachaevsk.jpg" alt="Фото церкви в Карачаево-Черкессии" class="foto-grid__item" />
+        <div class="foto-grid__name">
+          <h2 class="foto-grid__name-title title-cutter">Карачаево-Черкессия</h2>
+          <button aria-label="Поставить лайк" type="button" class="foto-grid__name-heart"></button>
         </div>
-        <div class="foto-grid__card">
-          <img
-            src="./images/elbrus.jpg"
-            alt="Фото Эльбруса издалека"
-            class="foto-grid__item"
-          />
-          <div class="foto-grid__name">
-            <div class="foto-grid__name-title">Гора Эльбрус</div>
-            <div class="foto-grid__name-heart opacity"></div>
-          </div>
+      </div>
+      <div class="foto-grid__card">
+        <img src="./images/elbrus.jpg" alt="Фото Эльбруса издалека" class="foto-grid__item" />
+        <div class="foto-grid__name">
+          <h2 class="foto-grid__name-title title-cutter">Гора Эльбрус</h2>
+          <button type="button" class="foto-grid__name-heart"></button>
         </div>
-        <div class="foto-grid__card">
-          <img
-            src="./images/dombay.jpg"
-            alt="Фото гор"
-            class="foto-grid__item"
-          />
-          <div class="foto-grid__name">
-            <div class="foto-grid__name-title">Домбай</div>
-            <div class="foto-grid__name-heart opacity"></div>
-          </div>
+      </div>
+      <div class="foto-grid__card">
+        <img src="./images/dombay.jpg" alt="Фото гор" class="foto-grid__item" />
+        <div class="foto-grid__name">
+          <h2 class="foto-grid__name-title title-cutter">Домбай</h2>
+          <button type="button" class="foto-grid__name-heart"></button>
         </div>
-        <div class="foto-grid__card">
-          <img
-            src="./images/karachaevsk.jpg"
-            alt="Фото церкви в Карачаево-Черкессии"
-            class="foto-grid__item"
-          />
-          <div class="foto-grid__name">
-            <div class="foto-grid__name-title">Карачаевск</div>
-            <div class="foto-grid__name-heart opacity"></div>
-          </div>
+      </div>
+      <div class="foto-grid__card">
+        <img src="./images/karachaevsk.jpg" alt="Фото церкви в Карачаево-Черкессии" class="foto-grid__item" />
+        <div class="foto-grid__name">
+          <h2 class="foto-grid__name-title title-cutter">Карачаевск</h2>
+          <button type="button" class="foto-grid__name-heart"></button>
         </div>
-        <div class="foto-grid__card">
-          <img
-            src="./images/elbrus.jpg"
-            alt="Фото Эльбруса издалека"
-            class="foto-grid__item"
-          />
-          <div class="foto-grid__name">
-            <div class="foto-grid__name-title">Гора Эльбрус</div>
-            <div class="foto-grid__name-heart opacity"></div>
-          </div>
+      </div>
+      <div class="foto-grid__card">
+        <img src="./images/elbrus.jpg" alt="Фото Эльбруса издалека" class="foto-grid__item" />
+        <div class="foto-grid__name">
+          <h2 class="foto-grid__name-title title-cutter">Гора Эльбрус</h2>
+          <button type="button" class="foto-grid__name-heart"></button>
         </div>
-        <div class="foto-grid__card">
-          <img
-            src="./images/dombay.jpg"
-            alt="Фото гор"
-            class="foto-grid__item"
-          />
-          <div class="foto-grid__name">
-            <div class="foto-grid__name-title">Домбай</div>
-            <div class="foto-grid__name-heart opacity"></div>
-          </div>
+      </div>
+      <div class="foto-grid__card">
+        <img src="./images/dombay.jpg" alt="Фото гор" class="foto-grid__item" />
+        <div class="foto-grid__name">
+          <h2 class="foto-grid__name-title title-cutter">Домбай</h2>
+          <button type="button" class="foto-grid__name-heart"></button>
         </div>
-      </section>
-    </main>
-    <div class="popup">
-      <form class="popup__container">
-        <a href="#" target="_self" class="popup__close opacity"></a>
-        <h3 class="popup__title">Редактировать профиль</h3>
-        <input
-          type="text"
-          value=" "
-          placeholder=" "
-          class="popup__input-text popup__input-text_type_name"
-        />
-        <input
-          type="text"
-          value=" "
-          placeholder=" "
-          class="popup__input-text popup__input-text_type_explorer"
-        />
-        <button
-          type="submit"
-          class="opacity popup__submit-btn popup__submit-btn_action_add"
-        >
+      </div>
+    </section>
+  </main>
+  <footer class="footer wrapper">
+    <p class="footer__copyright margin">&copy; 2020. Mesto Russia</p>
+  </footer>
+  <div class="popup">
+    <div class="popup__container">
+      <button aria-label="Закрыть попап" type="button" class="popup__close opacity"></button>
+      <h2 class="popup__title">Редактировать профиль</h2>
+      <form name="form-explorers" class="popup__inputs">
+        <input name="initial-explorer" type="text" value=" " placeholder="Имя Фамилия " class="popup__input-text popup__input-text_type_name" />
+        <input name="rank-explorer" type="text" value=" " placeholder="Род деятельности "
+          class="popup__input-text popup__input-text_type_explorer" />
+        <button aria-label="Сохранить изменения в форме" type="submit" class="popup__submit-btn popup__submit-btn_action_add">
           Сохранить
         </button>
       </form>
     </div>
-    <footer class="footer wrapper">
-      <p class="footer__copyright margin">&copy; 2020. Mesto Russia</p>
-    </footer>
-    <script src="script.js"></script>
-  </body>
+  </div>
+  <script src="./scripts/script.js"></script>
+</body>
+
 </html>

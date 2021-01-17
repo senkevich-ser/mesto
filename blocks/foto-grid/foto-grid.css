@@ -1,5 +1,5 @@
 .foto-grid {
-  background-color:#000000;
+  background-color: #000000;
   padding-top: 47px;
   display: -ms-grid;
   display: grid;
@@ -9,16 +9,3 @@
   max-width: 880px;
   margin: 0 auto;
 }
-/* @media (max-width: 768px) {
-  .foto-grid {
-    padding-left: 24px;
-    padding-right: 24px;
-  }
-}
-@media (max-width: 425px) {
-  .foto-grid {
-    padding-left: 16px;
-    padding-right: 16px;
-  }
-}
- */

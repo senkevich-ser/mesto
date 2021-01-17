@@ -9,6 +9,6 @@
 }
 @media (max-width: 1080px) {
   .lead {
-   flex-direction: column;
+    flex-direction: column;
   }
 }

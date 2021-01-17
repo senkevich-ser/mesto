@@ -39,7 +39,6 @@
 }
 @media (max-width: 420px) {
   .root {
-    padding-left: 19px;
-    padding-right: 19px;
+    padding: 0;
   }
 }

@@ -1,50 +1,27 @@
 .popup__close {
-  position: relative;
-  top: -20%;
-  left: 57%;
-  width: 32px;
-  height: 32px;
-}
-
-.popup__close:before,
-.popup__close:after {
   position: absolute;
-  left: 15px;
-  content: " ";
-  height: 40px;
-  width: 6px;
-  background-color: white;
-}
-.popup__close:before {
-  transform: rotate(-45deg);
-}
-.popup__close:after {
-  transform: rotate(45deg);
-}
+  top: -11%;
+  left: 98%;
+  width: 48px;
+  height: 48px;
+  background-color: transparent;
+  border: none;
+  background-image: url(../../../images/CloseIcon.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center; 
+} 
 
 @media (max-width: 570px) {
-  .popup__close:before,
-  .popup__close:after {
-    height: 33px;
-    width: 5px;
-  }
-}
-@media (max-width: 570px) {
   .popup__close {
-    top: -16%;
-    left: 56%;
+    top: -11%;
+    left: 98%;
   }
 }
-@media (max-width: 470px) {
-  .popup__close:before,
-  .popup__close:after {
-    height: 26px;
-    width: 4px;
-  }
-}
+
 @media (max-width: 470px) {
   .popup__close {
-    top: -20%;
-    left: 49%;
+    top: -13%;
+    left: 88%;
   }
 }
