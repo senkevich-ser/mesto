@@ -1,4 +1,4 @@
-.popup__close {
+.popup__close-cross {
   position: absolute;
   top: -11%;
   left: 98%;
@@ -13,14 +13,14 @@
 } 
 
 @media (max-width: 570px) {
-  .popup__close {
+  .popup__close-cross {
     top: -11%;
     left: 98%;
   }
 }
 
 @media (max-width: 470px) {
-  .popup__close {
+  .popup__close-cross {
     top: -13%;
     left: 88%;
   }

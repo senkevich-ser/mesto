@@ -1,6 +1,21 @@
 .foto-grid__item {
   width: 100%;
-  -o-object-fit: cover;
+  height: 282px;
   object-fit: cover;
   border-radius: 10px 10px 0px 0px;
+}
+.foto-grid__item:hover {
+  cursor: pointer;
+}
+
+@media (max-width: 1243px) {
+  .foto-grid__item {
+    height: 342px;
+  }
+}
+
+@media (max-width: 490px) {
+  .foto-grid__item {
+    height: 282px;
+  }
 }

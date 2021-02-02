@@ -3,7 +3,9 @@
   padding-top: 47px;
   display: -ms-grid;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  /* grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); */
+  /* grid-template-columns: repeat(auto-fit, 282px); */
+  grid-template-columns: repeat(3, 282px);
   grid-auto-rows: minmax(213px, auto);
   gap: 17px;
   max-width: 880px;

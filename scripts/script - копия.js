@@ -1,4 +1,4 @@
-/* let profileEditButton = document.querySelector(".lead__pencil"); //кнопка с карандашом//
+let profileEditButton = document.querySelector(".lead__pencil"); //кнопка с карандашом//
 let crossClosePopup = document.querySelector(".popup__close-cross"); //крест закрытия попапа//
 let leadElementInitial = document.querySelector(".lead__title"); //имя исследователя//
 let leadElementExplorer = document.querySelector(".lead__subtitle"); //звание исследователя//
@@ -33,7 +33,7 @@ function handleFormSubmit(evt) {
   leadElementExplorer.textContent = inputExplorer.value;
   closePopup();
 }
-formElement.addEventListener("submit", handleFormSubmit); */
+formElement.addEventListener("submit", handleFormSubmit);
 
 //ПЕРЕМЕННЫЕ для ПОПАПА ИЗМЕНЕНИЯ  КАРТОЧКИ//
 
@@ -76,80 +76,77 @@ const initialCards = [
       "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
   },
 ];
-
-let addLinkPoint = document.querySelector(".popup-card__input-text_type_link"); //поле ввода ссылки на картинку//
-let addPlacePoint = document.querySelector(".popup-card__input-text_type_place");//поле для ввода имени карточки)
-
-const cardTemplate = document.querySelector(".foto-grid__template").content;//темплейт для создания карточек//
-
-//функция для вставки новой карточки//
-
-function addCard() {
+//загрузка карточек//
+for (let i = 0; i < initialCards.length; i++) {
+  const cardTemplate = document.querySelector(".foto-grid__template").content;
   const cardElement = cardTemplate.cloneNode(true);
-  cardElement.querySelector(
-    ".foto-grid__name-title"
-  ).textContent = addPlacePoint.value;
-  cardElement.querySelector(".foto-grid__item").src = addLinkPoint.value;
-  sectionGrid.prepend(cardElement);
-}
-
-//функция вставки массива карточек//
-
-initialCards.forEach(function add(item){
-  const cardElement = cardTemplate.cloneNode(true);
-  cardElement.querySelector(".foto-grid__name-title").textContent = item.name;
-  cardElement.querySelector(".foto-grid__item").src = item.link;
-  //удаление карточки//
-  let urnButton = cardElement.querySelector(".foto-grid__urn");
-  urnButton.addEventListener("click", function (evt) {
-    let deletUrnButton = evt.target.closest(".foto-grid__card");
-    deletUrnButton.remove();
-    console.logg(add);
-  });
- //лайки//
-  let heartButton = cardElement.querySelector(".foto-grid__name-heart");
-  heartButton.addEventListener("click", function (evt) {
-    evt.target.classList.toggle("foto-grid__name-heart_black");
-  });
+  cardElement.querySelector(".foto-grid__name-title").textContent =
+    initialCards[i].name;
+  cardElement.querySelector(".foto-grid__item").src = initialCards[i].link;
   sectionGrid.append(cardElement);
-});
-
-//функция очистки формы//
-function clearForm() {
-  addPlacePoint.value = "";
-  addLinkPoint.value = "";
 }
+//закрытие попапа с сохранением изменений картинки//
+let addTitle = document.querySelector(".foto-grid__name-title"); //блок заголовка карточки//
+let addImage = document.querySelector(".foto-grid__item"); //блок изображения в карточке//
 
-//функция для отправки формы//
 function cardFormSubmit(evt) {
   evt.preventDefault();
+  function addCard() {
+    const cardTemplate = document.querySelector(".foto-grid__template").content;
+    const cardElement = cardTemplate.cloneNode(true);
+    sectionGrid.prepend(cardElement);
+  }
+  addPlacePoint.value = "";
+  addLinkPoint.value = "";
   addCard();
   closePopupCard();
-  clearForm();
 }
-//слушатель для отправки формы//
 formElementCard.addEventListener("submit", cardFormSubmit);
 
-//ФУНКЦИИ ФОРМЫ ДЛЯ  ЗАМЕНЫ КАРТОЧЕК//
+let urnButton = document.querySelectorAll(".foto-grid__urn"); //кнопка удаления карточки//
+let heartButton = document.querySelectorAll(".foto-grid__name-heart"); //кнопка лайка//
 
-//функция открытия формы для создания карточек//
+//удаление карточки//
+urnButton.forEach((item) => {
+  item.addEventListener("click", function (evt) {
+    let deletUrnButton = evt.target.closest(".foto-grid__card");
+    console.log(evt.target);
+    deletUrnButton.remove();
+    console.log(urnButton);
+  });
+});
+//лайки//
+heartButton.forEach((item) => {
+  item.addEventListener("click", function (evt) {
+    evt.target.classList.toggle("foto-grid__name-heart_black");
+    console.log(evt.target);
+  });
+});
+
+//ФУНКЦИИ ПОПАПА  ЗАМЕНЫ КАРТОЧЕК//
+
+//функция открытия попапа для карточек//
 function openPopupCard() {
   popupCard.classList.add("popup_opened");
 }
 
-//функция закрытия формы для создания карточек//
+//функция закрытия попапа для карточек//
 function closePopupCard() {
   popupCard.classList.remove("popup_opened");
-  clearForm();
 }
-//открытие формы для создания карточек//
+//открытие формы для создания карточки//
 addCardButton.addEventListener("click", function () {
   addPlacePoint.setAttribute("placeholder", "Название");
   addLinkPoint.setAttribute("placeholder", "Ссылка на картинку");
   openPopupCard();
 });
 
-//закрытие формы для создания карточек крестом//
+//закрытие попапа крестом//
 crossClosePopupCard.addEventListener("click", closePopupCard);
+
+let addLinkPoint = document.querySelector(".popup-card__input-text_type_link"); //поле ввода ссылки на картинку//
+let addPlacePoint = document.querySelector(
+  ".popup-card__input-text_type_place"
+); //поле ввода наименования места//
 
 

@@ -13,7 +13,7 @@
 @import url(../blocks/popup/__title/popup__title.css);
 @import url(../blocks/popup/__submit-btn/popup__submit-btn.css);
 @import url(../blocks/popup/_opened/popup_opened.css);
-@import url(../blocks/popup/popup__close/popup__close.css);
+@import url(../blocks/popup/popup__close-cross/popup__close-cross.css);
 @import url(../blocks/header/header.css);
 @import url(../blocks/header/__logo/header__logo.css);
 @import url(../blocks/lead/lead.css);
@@ -26,10 +26,17 @@
 @import url(../blocks/lead/__wrapper-title/lead__wrapper-title.css);
 @import url(../blocks/lead/__pencil/lead__pencil.css);
 @import url(../blocks/foto-grid/foto-grid.css);
+@import url(../blocks/foto-grid/__urn/foto-grid__urn.css);
 @import url(../blocks/foto-grid/__name/foto-grid__name.css);
 @import url(../blocks/foto-grid/__name-title/foto-grid__name-title.css);
 @import url(../blocks/foto-grid/__name-heart/foto-grid__name-heart.css);
+@import url(../blocks/foto-grid/__name-heart/_black/foto-grid__name-heart_black.css);
 @import url(../blocks/foto-grid/__card/foto-grid__card.css);
 @import url(../blocks/foto-grid/__item/foto-grid__item.css);
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
+@import url(../blocks/foto-open/__overlay/foto-open__overlay.css);
+@import url(../blocks/foto-open/__container/foto-open__container.css);
+@import url(../blocks/foto-open/__image/foto-open__image.css);
+@import url(../blocks/foto-open/__name/foto-open__name.css);
+@import url(../blocks/foto-open/__cross/foto-open__cross.css);

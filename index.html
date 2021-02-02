@@ -27,51 +27,19 @@
           <p class="lead__subtitle title-cutter margin">Исследователь океана</p>
         </div>
       </div>
-      <button aria-label="Добавить" type="button" class="lead__button opacity"></button>
+      <button aria-label="Добавить карточку" type="button" class="lead__button opacity"></button>
     </section>
     <section class="foto-grid" aria-label="Фото красивых мест">
+      <template class="foto-grid__template">
       <div class="foto-grid__card">
-        <img src="./images/karachaevsk.jpg" alt="Фото церкви в Карачаево-Черкессии" class="foto-grid__item" />
+        <div class="foto-grid__urn"></div>
+        <img src="./images/arkhyz.jpg" alt="Фото церкви в Карачаево-Черкессии" class="foto-grid__item" />
         <div class="foto-grid__name">
           <h2 class="foto-grid__name-title title-cutter">Карачаево-Черкессия</h2>
           <button aria-label="Поставить лайк" type="button" class="foto-grid__name-heart"></button>
         </div>
       </div>
-      <div class="foto-grid__card">
-        <img src="./images/elbrus.jpg" alt="Фото Эльбруса издалека" class="foto-grid__item" />
-        <div class="foto-grid__name">
-          <h2 class="foto-grid__name-title title-cutter">Гора Эльбрус</h2>
-          <button type="button" class="foto-grid__name-heart"></button>
-        </div>
-      </div>
-      <div class="foto-grid__card">
-        <img src="./images/dombay.jpg" alt="Фото гор" class="foto-grid__item" />
-        <div class="foto-grid__name">
-          <h2 class="foto-grid__name-title title-cutter">Домбай</h2>
-          <button type="button" class="foto-grid__name-heart"></button>
-        </div>
-      </div>
-      <div class="foto-grid__card">
-        <img src="./images/karachaevsk.jpg" alt="Фото церкви в Карачаево-Черкессии" class="foto-grid__item" />
-        <div class="foto-grid__name">
-          <h2 class="foto-grid__name-title title-cutter">Карачаевск</h2>
-          <button type="button" class="foto-grid__name-heart"></button>
-        </div>
-      </div>
-      <div class="foto-grid__card">
-        <img src="./images/elbrus.jpg" alt="Фото Эльбруса издалека" class="foto-grid__item" />
-        <div class="foto-grid__name">
-          <h2 class="foto-grid__name-title title-cutter">Гора Эльбрус</h2>
-          <button type="button" class="foto-grid__name-heart"></button>
-        </div>
-      </div>
-      <div class="foto-grid__card">
-        <img src="./images/dombay.jpg" alt="Фото гор" class="foto-grid__item" />
-        <div class="foto-grid__name">
-          <h2 class="foto-grid__name-title title-cutter">Домбай</h2>
-          <button type="button" class="foto-grid__name-heart"></button>
-        </div>
-      </div>
+    </template>
     </section>
   </main>
   <footer class="footer wrapper">
@@ -79,11 +47,11 @@
   </footer>
   <div class="popup">
     <div class="popup__container">
-      <button aria-label="Закрыть попап" type="button" class="popup__close opacity"></button>
+      <button aria-label="Закрыть попап" type="button" class="popup__close-cross opacity"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
       <form name="form-explorers" class="popup__inputs">
-        <input name="initial-explorer" type="text" value=" " placeholder="Имя Фамилия " class="popup__input-text popup__input-text_type_name" />
-        <input name="rank-explorer" type="text" value=" " placeholder="Род деятельности "
+        <input name="initial-explorer" type="text" placeholder="Имя Фамилия " value=""  class="popup__input-text popup__input-text_type_name" />
+        <input name="rank-explorer" type="text" placeholder="Род деятельности " value="" 
           class="popup__input-text popup__input-text_type_explorer" />
         <button aria-label="Сохранить изменения в форме" type="submit" class="popup__submit-btn popup__submit-btn_action_add">
           Сохранить
@@ -91,6 +59,32 @@
       </form>
     </div>
   </div>
+  <div class="popup popup-card">
+    <div class="popup__container popup-card__container">
+      <button aria-label="Закрыть попап" type="button" class="popup__close-cross popup-card__close-cross opacity"></button>
+      <h2 class="popup__title popup-card__title">Новое место</h2>
+      <form name="form-explorers" class="popup__inputs popup-card__inputs">
+        <input name="initial-explorer" type="text" placeholder="Имя Фамилия " value=""
+          class="popup__input-text popup-card__input-text popup-card__input-text_type_place" />
+        <input name="rank-explorer" type="text" placeholder="Род деятельности " value=""
+          class="popup__input-text popup-card__input-text popup-card__input-text_type_link" />
+        <button aria-label="Создать новую карточку" type="submit"
+          class="popup__submit-btn popup-card__submit-btn popup-card__submit-btn_action_add">
+          Создать
+        </button>
+      </form>
+    </div>
+  </div>
+  <template class="foto-open">
+  <div class="foto-open__overlay">
+    <div class=" foto-open__container">
+      <img class="foto-open__image" src="./images/arkhyz.jpg"/>
+      <button aria-label="Закрыть фото" type="button"
+        class="foto-open__cross  opacity"></button>
+      <h2 class="foto-open__name">Новое место</h2>
+    </div>
+  </div>
+  </template>
   <script src="./scripts/script.js"></script>
 </body>
 
