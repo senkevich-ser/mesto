@@ -1,4 +1,4 @@
-/* let profileEditButton = document.querySelector(".lead__pencil"); //кнопка с карандашом//
+let profileEditButton = document.querySelector(".lead__pencil"); //кнопка с карандашом//
 let crossClosePopup = document.querySelector(".popup__close-cross"); //крест закрытия попапа//
 let leadElementInitial = document.querySelector(".lead__title"); //имя исследователя//
 let leadElementExplorer = document.querySelector(".lead__subtitle"); //звание исследователя//
@@ -33,7 +33,7 @@ function handleFormSubmit(evt) {
   leadElementExplorer.textContent = inputExplorer.value;
   closePopup();
 }
-formElement.addEventListener("submit", handleFormSubmit); */
+formElement.addEventListener("submit", handleFormSubmit);
 
 //ПЕРЕМЕННЫЕ для ПОПАПА ИЗМЕНЕНИЯ  КАРТОЧКИ//
 
