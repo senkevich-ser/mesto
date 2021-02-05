@@ -59,24 +59,7 @@
       </form>
     </div>
   </div>
-  <div class="popup popup-card">
-    <div class="popup__container popup-card__container">
-      <button aria-label="Закрыть попап" type="button" class="popup__close-cross popup-card__close-cross opacity"></button>
-      <h2 class="popup__title popup-card__title">Новое место</h2>
-      <form name="form-explorers" class="popup__inputs popup-card__inputs">
-        <input name="initial-explorer" type="text" placeholder="Имя Фамилия " value=""
-          class="popup__input-text popup-card__input-text popup-card__input-text_type_place" />
-        <input name="rank-explorer" type="text" placeholder="Род деятельности " value=""
-          class="popup__input-text popup-card__input-text popup-card__input-text_type_link" />
-        <button aria-label="Создать новую карточку" type="submit"
-          class="popup__submit-btn popup-card__submit-btn popup-card__submit-btn_action_add">
-          Создать
-        </button>
-      </form>
-    </div>
-  </div>
-  <template class="foto-open">
-  <div class="foto-open__overlay">
+  <div class="foto-open popup">
     <div class=" foto-open__container">
       <img class="foto-open__image" src="./images/arkhyz.jpg"/>
       <button aria-label="Закрыть фото" type="button"
@@ -84,7 +67,6 @@
       <h2 class="foto-open__name">Новое место</h2>
     </div>
   </div>
-  </template>
   <script src="./scripts/script.js"></script>
 </body>
 

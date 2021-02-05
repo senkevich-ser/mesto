@@ -5,7 +5,7 @@
   align-items: center;
   max-width: 816px;
   max-height: 540px;
-  position: relative;
+  position: fixed;
 }
 @media (max-width: 890px) {
   .foto-open__container{
