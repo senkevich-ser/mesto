@@ -31,15 +31,15 @@
     </section>
     <section class="foto-grid" aria-label="Фото красивых мест">
       <template class="foto-grid__template">
-      <div class="foto-grid__card">
-        <div class="foto-grid__urn"></div>
-        <img src="./images/arkhyz.jpg" alt="Фото церкви в Карачаево-Черкессии" class="foto-grid__item" />
-        <div class="foto-grid__name">
-          <h2 class="foto-grid__name-title title-cutter">Карачаево-Черкессия</h2>
-          <button aria-label="Поставить лайк" type="button" class="foto-grid__name-heart"></button>
+        <div class="foto-grid__card">
+          <div class="foto-grid__urn"></div>
+          <img src="./images/arkhyz.jpg " alt="Foto" class="foto-grid__item" />
+          <div class="foto-grid__name">
+            <h2 class="foto-grid__name-title title-cutter">Карачаево-Черкессия</h2>
+            <button aria-label="Поставить лайк" type="button" class="foto-grid__name-heart"></button>
+          </div>
         </div>
-      </div>
-    </template>
+      </template>
     </section>
   </main>
   <footer class="footer wrapper">
@@ -50,10 +50,12 @@
       <button aria-label="Закрыть попап" type="button" class="popup__close-cross opacity"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
       <form name="form-explorers" class="popup__inputs">
-        <input name="initial-explorer" type="text" placeholder="Имя Фамилия " value=""  class="popup__input-text popup__input-text_type_name" />
-        <input name="rank-explorer" type="text" placeholder="Род деятельности " value="" 
+        <input name="initial-explorer" type="text" placeholder="Имя Фамилия " value=""
+          class="popup__input-text popup__input-text_type_name" />
+        <input name="rank-explorer" type="text" placeholder="Род деятельности " value=""
           class="popup__input-text popup__input-text_type_explorer" />
-        <button aria-label="Сохранить изменения в форме" type="submit" class="popup__submit-btn popup__submit-btn_action_add">
+        <button aria-label="Сохранить изменения в форме" type="submit"
+          class="popup__submit-btn popup__submit-btn_action_add">
           Сохранить
         </button>
       </form>
@@ -61,9 +63,8 @@
   </div>
   <div class="foto-open popup">
     <div class=" foto-open__container">
-      <img class="foto-open__image" src="./images/arkhyz.jpg"/>
-      <button aria-label="Закрыть фото" type="button"
-        class="foto-open__cross  opacity"></button>
+      <img class="foto-open__image" src="./images/arkhyz.jpg" alt="Foto" />
+      <button aria-label="Закрыть фото" type="button" class="foto-open__cross  opacity"></button>
       <h2 class="foto-open__name">Новое место</h2>
     </div>
   </div>

@@ -1,14 +1,16 @@
-let profileEditButton = document.querySelector(".lead__pencil"); //кнопка с карандашом//
-let crossClosePopup = document.querySelector(".popup__close-cross"); //крест закрытия попапа//
-let leadElementInitial = document.querySelector(".lead__title"); //имя исследователя//
-let leadElementExplorer = document.querySelector(".lead__subtitle"); //звание исследователя//
-let inputName = document.querySelector(".popup__input-text_type_name"); //поле ввода имени исследователя//
-let inputExplorer = document.querySelector(".popup__input-text_type_explorer"); //поле ввода звания исследователя//
-let popup = document.querySelector(".popup"); //подложка попапа//
-let submitButton = document.querySelector(".popup__submit-btn"); //кнопка сохранить изменения//
-let formElements = document.querySelector(".popup__inputs"); //поля ввода//
-let titleAddCardForm = document.querySelector(".popup__title"); //название формы//
-let crossClosePopupFoto = document.querySelector(".foto-open__cross"); //крест закрытия попапа с фото//
+const profileEditButton = document.querySelector(".lead__pencil"); //кнопка с карандашом//
+const crossClosePopup = document.querySelector(".popup__close-cross"); //крест закрытия попапа//
+const leadElementInitial = document.querySelector(".lead__title"); //имя исследователя//
+const leadElementExplorer = document.querySelector(".lead__subtitle"); //звание исследователя//
+const inputName = document.querySelector(".popup__input-text_type_name"); //поле ввода имени исследователя//
+const inputExplorer = document.querySelector(
+  ".popup__input-text_type_explorer"
+); //поле ввода звания исследователя//
+const popup = document.querySelector(".popup"); //подложка попапа//
+const submitButton = document.querySelector(".popup__submit-btn"); //кнопка сохранить изменения//
+const formElements = document.querySelector(".popup__inputs"); //поля ввода//
+const titleAddCardForm = document.querySelector(".popup__title"); //название формы//
+const crossClosePopupFoto = document.querySelector(".foto-open__cross"); //крест закрытия попапа с фото//
 
 //функция открытия попапа//
 function openPopup() {
@@ -31,8 +33,8 @@ crossClosePopupFoto.addEventListener("click", closePopupFoto);
 
 //ПЕРЕМЕННЫЕ для ПОПАПА C ФОРТО//
 
-let fotoCard = document.querySelector(".foto-open"); //подложка попапа c фото//
-let addCardButton = document.querySelector(".lead__button"); //кнопка открытия попапа для изменения карточки//
+const fotoCard = document.querySelector(".foto-open"); //подложка попапа c фото//
+const addCardButton = document.querySelector(".lead__button"); //кнопка открытия попапа для изменения карточки//
 
 //слушатель открытия  формы заполнения и вывод предыдущих значений//
 
@@ -91,7 +93,7 @@ const initialCards = [
       "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
   },
 ];
-let sectionGrid = document.querySelector(".foto-grid"); //cекция для карточек//
+const sectionGrid = document.querySelector(".foto-grid"); //cекция для карточек//
 const cardTemplate = document.querySelector(".foto-grid__template").content; //переменная темплейта//
 
 //функция для генерации карточек//
@@ -99,22 +101,23 @@ function addCard(Card) {
   const cardElement = cardTemplate.cloneNode(true);
   cardElement.querySelector(".foto-grid__name-title").textContent = Card.name;
   cardElement.querySelector(".foto-grid__item").src = Card.link;
+  cardElement.querySelector(".foto-grid__item").alt = Card.name;
 
   //удаление карточки//
-  let urnButton = cardElement.querySelector(".foto-grid__urn");
+  const urnButton = cardElement.querySelector(".foto-grid__urn");
   urnButton.addEventListener("click", function (evt) {
-    let deletUrnButton = evt.target.closest(".foto-grid__card");
+    const deletUrnButton = evt.target.closest(".foto-grid__card");
     deletUrnButton.remove();
   });
   //лайки//
-  let heartButton = cardElement.querySelector(".foto-grid__name-heart");
+  const heartButton = cardElement.querySelector(".foto-grid__name-heart");
   heartButton.addEventListener("click", function (evt) {
     evt.target.classList.toggle("foto-grid__name-heart_black");
   });
   //открытие попапа с фото//
-  let imageButton = cardElement.querySelector(".foto-grid__item");
-  let imageLink = document.querySelector(".foto-open__image");
-  let nameCard = document.querySelector(".foto-open__name");
+  const imageButton = cardElement.querySelector(".foto-grid__item");
+  const imageLink = document.querySelector(".foto-open__image");
+  const nameCard = document.querySelector(".foto-open__name");
   imageButton.addEventListener("click", function () {
     fotoCard.classList.add("popup_opened");
     nameCard.textContent = Card.name;
@@ -128,9 +131,9 @@ function renderCard(Card) {
 }
 //функция генерации новой карточки//
 function inatialCard() {
-  let inputText = inputName.value;
-  let inputLink = inputExplorer.value;
-  let cardItem = addCard({ name: inputText, link: inputLink });
+  const inputText = inputName.value;
+  const inputLink = inputExplorer.value;
+  const cardItem = addCard({ name: inputText, link: inputLink });
   sectionGrid.prepend(cardItem);
   clearForm();
 }

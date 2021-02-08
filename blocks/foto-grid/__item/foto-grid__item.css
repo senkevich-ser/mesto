@@ -7,15 +7,3 @@
 .foto-grid__item:hover {
   cursor: pointer;
 }
-
-@media (max-width: 1243px) {
-  .foto-grid__item {
-    height: 342px;
-  }
-}
-
-@media (max-width: 490px) {
-  .foto-grid__item {
-    height: 282px;
-  }
-}
