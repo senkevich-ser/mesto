@@ -23,14 +23,7 @@ function closePopup() {
 function closePopupFoto() {
   fotoCard.classList.remove("popup_opened");
 }
-//открытие формы заполнения и вывод предыдущих значений//
-profileEditButton.addEventListener("click", function () {
-  openPopup();
-  inputName.value = leadElementInitial.textContent;
-  inputExplorer.value = leadElementExplorer.textContent;
-  titleAddCardForm.textContent = "Редактировать профиль";
-  submitButton.textContent = "Сохранить";
-});
+
 //закрытие формы через крест//
 crossClosePopup.addEventListener("click", closePopup);
 //закрытие попапа с фото//
@@ -41,7 +34,19 @@ crossClosePopupFoto.addEventListener("click", closePopupFoto);
 let fotoCard = document.querySelector(".foto-open"); //подложка попапа c фото//
 let addCardButton = document.querySelector(".lead__button"); //кнопка открытия попапа для изменения карточки//
 
-// функция открытия попапа для добавления карточек//
+//слушатель открытия  формы заполнения и вывод предыдущих значений//
+
+profileEditButton.addEventListener("click", function () {
+  openPopup();
+  inputName.value = leadElementInitial.textContent;
+  inputExplorer.value = leadElementExplorer.textContent;
+  titleAddCardForm.textContent = "Редактировать профиль";
+  submitButton.textContent = "Сохранить";
+  formElements.removeEventListener("submit", cardFormSubmit);
+  formElements.addEventListener("submit", handleFormSubmit);
+});
+
+// слушатель открытия попапа для добавления карточек//
 
 addCardButton.addEventListener("click", function () {
   openPopup();
@@ -49,6 +54,8 @@ addCardButton.addEventListener("click", function () {
   inputName.setAttribute("placeholder", "Название");
   inputExplorer.setAttribute("placeholder", "Ссылка на картинку");
   submitButton.textContent = "Создать";
+  formElements.addEventListener("submit", cardFormSubmit);
+  formElements.removeEventListener("submit", handleFormSubmit);
 });
 
 //ДОБАВЛЕНИЕ КАРТОЧЕК//
@@ -151,10 +158,11 @@ function cardFormSubmit(evt) {
 formElements.addEventListener("submit", cardFormSubmit);
 
 //закрытие формы  и сохранение данных исследователей//
-/* function handleFormSubmit(evt) {
+function handleFormSubmit(evt) {
   evt.preventDefault();
   leadElementInitial.textContent = inputName.value;
   leadElementExplorer.textContent = inputExplorer.value;
   closePopup();
+  clearForm();
 }
-formElement.addEventListener("submit", handleFormSubmit); */
+formElements.addEventListener("submit", handleFormSubmit);
