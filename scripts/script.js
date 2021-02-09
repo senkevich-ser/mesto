@@ -1,3 +1,4 @@
+//ПЕРЕМЕННЫЕ ФОРМЫ РЕДАКТИРОВАНИЯ ПРОФИЛЯ (РП)//
 const profileEditButton = document.querySelector(".lead__pencil"); //кнопка с карандашом//
 const crossClosePopup = document.querySelector(".popup__close-cross"); //крест закрытия попапа//
 const leadElementInitial = document.querySelector(".lead__title"); //имя исследователя//
@@ -10,54 +11,58 @@ const popup = document.querySelector(".popup"); //подложка попапа/
 const submitButton = document.querySelector(".popup__submit-btn"); //кнопка сохранить изменения//
 const formElements = document.querySelector(".popup__inputs"); //поля ввода//
 const titleAddCardForm = document.querySelector(".popup__title"); //название формы//
+
+//ПЕРЕМЕННЫЕ ФОРМЫ ДОБАВЛЕНИЯ  КАРТОЧКИ(ДК)//
+const crossClosePopupCard = document.querySelector(".popup-card__close-cross"); //крест закрытия формы ДК//
+const inputPlace = document.querySelector(".popup-card__input-text_type_place"); //поле ввода наименования места//
+const inputFoto = document.querySelector(".popup-card__input-text_type_link"); //поле ввода ссылки на фото //
+const popupCard = document.querySelector(".popup-card"); //подложка формы ДК//
+const submitButtonCard = document.querySelector(".popup-card__submit-btn"); //кнопка создать карточку//
+const formElementsCard = document.querySelector(".popup-card__inputs"); //поля ввода формы ДК//
 const crossClosePopupFoto = document.querySelector(".foto-open__cross"); //крест закрытия попапа с фото//
+const addCardButton = document.querySelector(".lead__button"); //кнопка открытия формы ДК//
 
-//функция открытия попапа//
-function openPopup() {
-  popup.classList.add("popup_opened");
-}
-//функция закрытия попапа//
-function closePopup() {
-  popup.classList.remove("popup_opened");
-  /* clearForm(); */
-}
-//функция закрытия попапа с фото//
-function closePopupFoto() {
-  fotoCard.classList.remove("popup_opened");
+//функция открытия попапов//
+function openPopup(open) {
+  open.classList.add("popup_opened");
 }
 
-//закрытие формы через крест//
-crossClosePopup.addEventListener("click", closePopup);
-//закрытие попапа с фото//
-crossClosePopupFoto.addEventListener("click", closePopupFoto);
+//функция закрытия попапов//
+function closePopup(close) {
+  close.classList.remove("popup_opened");
+}
+
+//закрытие формы РП через крест//
+crossClosePopup.addEventListener("click", function () {
+  closePopup(popup);
+});
+//закрытие формы ДК через крест//
+crossClosePopupCard.addEventListener("click", function () {
+  closePopup(popupCard);
+});
+//закрытие попапа с фото через крест//
+crossClosePopupFoto.addEventListener("click", function () {
+  closePopup(fotoCard);
+});
 
 //ПЕРЕМЕННЫЕ для ПОПАПА C ФОРТО//
 
 const fotoCard = document.querySelector(".foto-open"); //подложка попапа c фото//
-const addCardButton = document.querySelector(".lead__button"); //кнопка открытия попапа для изменения карточки//
 
-//слушатель открытия  формы заполнения и вывод предыдущих значений//
+//слушатель открытия  формы РП  и вывод предыдущих значений//
 
 profileEditButton.addEventListener("click", function () {
-  openPopup();
+  openPopup(popup);
   inputName.value = leadElementInitial.textContent;
   inputExplorer.value = leadElementExplorer.textContent;
   titleAddCardForm.textContent = "Редактировать профиль";
   submitButton.textContent = "Сохранить";
-  formElements.removeEventListener("submit", cardFormSubmit);
-  formElements.addEventListener("submit", handleFormSubmit);
 });
 
-// слушатель открытия попапа для добавления карточек//
+// слушатель открытия формы ДК//
 
 addCardButton.addEventListener("click", function () {
-  openPopup();
-  titleAddCardForm.textContent = "Новое место";
-  inputName.setAttribute("placeholder", "Название");
-  inputExplorer.setAttribute("placeholder", "Ссылка на картинку");
-  submitButton.textContent = "Создать";
-  formElements.addEventListener("submit", cardFormSubmit);
-  formElements.removeEventListener("submit", handleFormSubmit);
+  openPopup(popupCard);
 });
 
 //ДОБАВЛЕНИЕ КАРТОЧЕК//
@@ -96,12 +101,13 @@ const initialCards = [
 const sectionGrid = document.querySelector(".foto-grid"); //cекция для карточек//
 const cardTemplate = document.querySelector(".foto-grid__template").content; //переменная темплейта//
 
-//функция для генерации карточек//
+//функция для генерации карточек из массива//
 function addCard(Card) {
   const cardElement = cardTemplate.cloneNode(true);
+  const cardElementFoto = cardElement.querySelector(".foto-grid__item");
   cardElement.querySelector(".foto-grid__name-title").textContent = Card.name;
-  cardElement.querySelector(".foto-grid__item").src = Card.link;
-  cardElement.querySelector(".foto-grid__item").alt = Card.name;
+  cardElementFoto.src = Card.link;
+  cardElementFoto.alt = Card.name;
 
   //удаление карточки//
   const urnButton = cardElement.querySelector(".foto-grid__urn");
@@ -119,7 +125,7 @@ function addCard(Card) {
   const imageLink = document.querySelector(".foto-open__image");
   const nameCard = document.querySelector(".foto-open__name");
   imageButton.addEventListener("click", function () {
-    fotoCard.classList.add("popup_opened");
+    openPopup(fotoCard);
     nameCard.textContent = Card.name;
     imageLink.src = Card.link;
   });
@@ -130,12 +136,13 @@ function renderCard(Card) {
   sectionGrid.prepend(Card);
 }
 //функция генерации новой карточки//
-function inatialCard() {
-  const inputText = inputName.value;
-  const inputLink = inputExplorer.value;
+function initialCard() {
+  const inputText = inputPlace.value;
+  const inputLink = inputFoto.value;
   const cardItem = addCard({ name: inputText, link: inputLink });
   sectionGrid.prepend(cardItem);
-  clearForm();
+  inputPlace.value = "";
+  inputFoto.value = "";
 }
 
 //цикл вставки массива карточек//
@@ -144,28 +151,21 @@ initialCards.forEach((item) => {
   renderCard(addCard(item));
 });
 
-//функция очистки формы//
-function clearForm() {
-  inputName.value = "";
-  inputExplorer.value = "";
-}
-
-//функция для отправки формы//
-function cardFormSubmit(evt) {
+//функция для отправки формы ДК//
+function submitCardForm(evt) {
   evt.preventDefault();
-  closePopup();
-  inatialCard();
+  closePopup(popupCard);
+  initialCard();
 }
-//слушатель для отправки формы//
+//слушатель для отправки формы ДК//
 
-formElements.addEventListener("submit", cardFormSubmit);
+formElementsCard.addEventListener("submit", submitCardForm);
 
-//закрытие формы  и сохранение данных исследователей//
+//закрытие формы РП  и сохранение данных исследователей//
 function handleFormSubmit(evt) {
   evt.preventDefault();
   leadElementInitial.textContent = inputName.value;
   leadElementExplorer.textContent = inputExplorer.value;
-  closePopup();
-  clearForm();
+  closePopup(popup);
 }
 formElements.addEventListener("submit", handleFormSubmit);
