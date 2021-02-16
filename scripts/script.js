@@ -11,6 +11,7 @@ const popup = document.querySelector(".popup"); //подложка попапа/
 const submitButton = document.querySelector(".popup__submit-btn"); //кнопка сохранить изменения//
 const formElements = document.querySelector(".popup__inputs"); //поля ввода//
 const titleAddCardForm = document.querySelector(".popup__title"); //название формы//
+const popupContainer = document.querySelector(".popup__container"); //форма РП//
 
 //ПЕРЕМЕННЫЕ ФОРМЫ ДОБАВЛЕНИЯ  КАРТОЧКИ(ДК)//
 const crossClosePopupCard = document.querySelector(".popup-card__close-cross"); //крест закрытия формы ДК//
@@ -32,10 +33,25 @@ function closePopup(close) {
   close.classList.remove("popup_opened");
 }
 
-//закрытие формы РП через крест//
-crossClosePopup.addEventListener("click", function () {
-  closePopup(popup);
+//закрытие формы РП через крест и оверлей//
+popup.addEventListener("click", function (evt) {
+  if (evt.target.classList.contains("popup__close-cross")) {
+    closePopup(popup);
+  }
+  if (evt.target.classList.contains("popup")) {
+    closePopup(popup);
+  }
+  if (evt.keyCode === 27) {
+    closePopup(popup);
+  }
 });
+//закрытие формы РП через ESC//
+document.addEventListener("keydown", function (evt) {
+  if (evt.keyCode === 27) {
+    closePopup(popup);
+  }
+});
+
 //закрытие формы ДК через крест//
 crossClosePopupCard.addEventListener("click", function () {
   closePopup(popupCard);
