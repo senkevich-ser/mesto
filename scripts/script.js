@@ -20,6 +20,7 @@ const inputFoto = document.querySelector(".popup-card__input-text_type_link"); /
 const popupCard = document.querySelector(".popup-card"); //подложка формы ДК//
 const submitButtonCard = document.querySelector(".popup-card__submit-btn"); //кнопка создать карточку//
 const formElementsCard = document.querySelector(".popup-card__inputs"); //поля ввода формы ДК//
+const fotoCard = document.querySelector(".foto-open"); //подложка попапа c фото//
 const crossClosePopupFoto = document.querySelector(".foto-open__cross"); //крест закрытия попапа с фото//
 const addCardButton = document.querySelector(".lead__button"); //кнопка открытия формы ДК//
 
@@ -41,29 +42,34 @@ popup.addEventListener("click", function (evt) {
   if (evt.target.classList.contains("popup")) {
     closePopup(popup);
   }
-  if (evt.keyCode === 27) {
-    closePopup(popup);
-  }
 });
-//закрытие формы РП через ESC//
+//закрытие форм РП, ДК, попапа с фото через ESC//
 document.addEventListener("keydown", function (evt) {
-  if (evt.keyCode === 27) {
+  if (evt.key === "Escape") {
     closePopup(popup);
+    closePopup(popupCard);
+    closePopup(fotoCard);
   }
 });
 
-//закрытие формы ДК через крест//
-crossClosePopupCard.addEventListener("click", function () {
-  closePopup(popupCard);
+//закрытие формы ДК через крест и оверлей//
+popupCard.addEventListener("click", function (evt) {
+  if (evt.target.classList.contains("popup-card__close-cross")) {
+    closePopup(popupCard);
+  }
+  if (evt.target.classList.contains("popup-card")) {
+    closePopup(popupCard);
+  }
 });
-//закрытие попапа с фото через крест//
-crossClosePopupFoto.addEventListener("click", function () {
-  closePopup(fotoCard);
+//закрытие попапа с фото через крест и оверлей//
+fotoCard.addEventListener("click", function (evt) {
+  if (evt.target.classList.contains("foto-open__cross")) {
+    closePopup(fotoCard);
+  }
+  if (evt.target.classList.contains("foto-open")) {
+    closePopup(fotoCard);
+  }
 });
-
-//ПЕРЕМЕННЫЕ для ПОПАПА C ФОРТО//
-
-const fotoCard = document.querySelector(".foto-open"); //подложка попапа c фото//
 
 //слушатель открытия  формы РП  и вывод предыдущих значений//
 
