@@ -49,7 +49,7 @@
     <div class="popup__container">
       <button aria-label="Закрыть попап" type="button" class="popup__close-cross opacity"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
-      <form name="formExplorers" class="popup__inputs">
+      <form name="formExplorers" class="popup__inputs" novalidate>
         <input name="initialExplorer" type="text" placeholder="Имя Фамилия " value=""
           class="popup__input-text popup__input-text_type_name" maxlength="40" minlength="2" required />
         <span class="popup__error">Вы пропустили это поле</span>
@@ -57,7 +57,7 @@
           class="popup__input-text popup__input-text_type_explorer" maxlength="200" minlength="2" required />
         <span class="popup__error">Введите адрес сайта</span>
         <button aria-label="Сохранить изменения в форме" type="submit"
-          class="popup__submit-btn popup__submit-btn_action_add">
+          class="popup__submit-btn popup__submit-btn_disabled" disabled>
           Сохранить
         </button>
       </form>
@@ -68,19 +68,19 @@
       <button aria-label="Закрыть попап" type="button"
         class="popup-card__close-cross popup__close-cross opacity"></button>
       <h2 class="popup-card__title popup__title">Новое место</h2>
-      <form name="formCards" class="popup-card__inputs popup__inputs">
+      <form name="formCards" class="popup-card__inputs popup__inputs" novalidate>
         <input name="placeName" type="text" placeholder="Название " value=""
-          class="popup-card__input-text popup__input-text popup-card__input-text_type_place" />
+          class="popup-card__input-text popup__input-text " />
         <input name="linkName" type="text" placeholder="Ссылка на картинку " value=""
-          class=" popup-card__input-text popup__input-text popup-card__input-text_type_link" />
+          class=" popup-card__input-text popup__input-text" />
         <button aria-label="Сохранить изменения в форме" type="submit"
-          class="popup-card__submit-btn popup__submit-btn popup__submit-btn_action_add">
+          class="popup-card__submit-btn popup__submit-btn popup__submit-btn_disabled" disabled>
           Создать
         </button>
       </form>
     </div>
   </div>
-  <div class="foto-open popup">
+  <div class=" foto-open popup">
     <div class=" foto-open__container">
       <img class="foto-open__image" src="./images/arkhyz.jpg" alt="Foto" />
       <button aria-label="Закрыть фото" type="button" class="foto-open__cross  opacity"></button>

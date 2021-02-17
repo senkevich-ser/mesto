@@ -15,8 +15,6 @@ const popupContainer = document.querySelector(".popup__container"); //форма
 
 //ПЕРЕМЕННЫЕ ФОРМЫ ДОБАВЛЕНИЯ  КАРТОЧКИ(ДК)//
 const crossClosePopupCard = document.querySelector(".popup-card__close-cross"); //крест закрытия формы ДК//
-/* const inputPlace = document.querySelector(".popup-card__input-text_type_place"); //поле ввода наименования места//
-const inputFoto = document.querySelector(".popup-card__input-text_type_link"); //поле ввода ссылки на фото // */
 const formAdding = document.forms.formCards; //переменная полей формы ДК//
 const inputPlace = formAdding.elements.placeName;
 const inputFoto = formAdding.elements.linkName;
@@ -80,8 +78,6 @@ profileEditButton.addEventListener("click", function () {
   openPopup(popup);
   inputName.value = leadElementInitial.textContent;
   inputExplorer.value = leadElementExplorer.textContent;
-  /*  titleAddCardForm.textContent = "Редактировать профиль";
-  submitButton.textContent = "Сохранить"; */
 });
 
 // слушатель открытия формы ДК//
@@ -166,8 +162,6 @@ function initialCard() {
   const inputLink = inputFoto.value;
   const cardItem = addCard({ name: inputText, link: inputLink });
   sectionGrid.prepend(cardItem);
-  inputPlace.value = "";
-  inputFoto.value = "";
 }
 
 //цикл вставки массива карточек//
@@ -181,6 +175,9 @@ function submitCardForm(evt) {
   evt.preventDefault();
   closePopup(popupCard);
   initialCard();
+  inputPlace.value = "";
+  inputFoto.value = "";
+  setSubmitButtonState(false, submitButtonCard);
 }
 //слушатель для отправки формы ДК//
 
@@ -194,9 +191,24 @@ function handleFormSubmit(evt) {
   closePopup(popup);
 }
 formElements.addEventListener("submit", handleFormSubmit);
-//ПЕРЕМЕННЫЕ ПОЛЕЙ ВВОДА//
 
-/* form.addEventListener("input", function (evt) {
-  console.log(evt);
+//Функция деактивации кнопки "Сохранить/Создать" //
+function setSubmitButtonState(isFormValid, saveButton) {
+  if (isFormValid) {
+    saveButton.removeAttribute("disabled");
+    saveButton.classList.remove("popup__submit-btn_disabled");
+  } else {
+    saveButton.setAttribute("disabled", true);
+    saveButton.classList.add("popup__submit-btn_disabled");
+  }
+}
+
+formEditing.addEventListener("input", function (evt) {
+  const isValid = inputName.value.length > 0 && inputExplorer.value.length > 0;
+  setSubmitButtonState(isValid, submitButton);
 });
- */
+
+formAdding.addEventListener("input", function (evt) {
+  const isValidCard = inputPlace.value.length > 0 && inputFoto.value.length > 0;
+  setSubmitButtonState(isValidCard, submitButtonCard);
+});

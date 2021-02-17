@@ -41,3 +41,4 @@
 @import url(../blocks/foto-open/__name/foto-open__name.css);
 @import url(../blocks/foto-open/__cross/foto-open__cross.css);
 @import url(../blocks/popup/_opened/popup_opened.css);
+@import url(../blocks/popup/__submit-btn/_disabled/popup__submit-btn_disabled.css);
