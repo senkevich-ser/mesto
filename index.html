@@ -49,30 +49,33 @@
     <div class="popup__container">
       <button aria-label="Закрыть попап" type="button" class="popup__close-cross opacity"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
-      <form name="formExplorers" class="popup__inputs" novalidate>
-        <input name="initialExplorer" type="text" placeholder="Имя Фамилия " value=""
-          class="popup__input-text popup__input-text_type_name" maxlength="40" minlength="2" required />
-        <span class="popup__error">Вы пропустили это поле</span>
-        <input name="rankExplorer" type="text" placeholder="Род деятельности " value=""
-          class="popup__input-text popup__input-text_type_explorer" maxlength="200" minlength="2" required />
-        <span class="popup__error">Введите адрес сайта</span>
-        <button aria-label="Сохранить изменения в форме" type="submit"
-          class="popup__submit-btn popup__submit-btn_disabled" disabled>
+      <form name="formExplorers" class="form popup__inputs" novalidate>
+        <input id="initial-input" name="initialExplorer" type="text" placeholder="Имя Фамилия " value=""
+          class="form__input popup__input-text popup__input-text_type_name" maxlength="40" minlength="2" required />
+        <span class="initial-input-error popup__error"></span>
+        <input id="rank-input" name="rankExplorer" type="text" placeholder="Род деятельности " value=""
+          class="form__input popup__input-text popup__input-text_type_explorer" maxlength="200" minlength="2"
+          required />
+        <span class="rank-input-error popup__error"></span>
+        <button aria-label="Сохранить изменения в форме" type="submit" class="popup__submit-btn">
           Сохранить
         </button>
       </form>
     </div>
   </div>
-  <div class="popup-card popup">
+  <div class=" popup-card popup">
     <div class="popup-card__container popup__container">
       <button aria-label="Закрыть попап" type="button"
         class="popup-card__close-cross popup__close-cross opacity"></button>
       <h2 class="popup-card__title popup__title">Новое место</h2>
-      <form name="formCards" class="popup-card__inputs popup__inputs" novalidate>
-        <input name="placeName" type="text" placeholder="Название " value=""
-          class="popup-card__input-text popup__input-text " />
-        <input name="linkName" type="text" placeholder="Ссылка на картинку " value=""
-          class=" popup-card__input-text popup__input-text" />
+      <form name="formCards" class="form popup-card__inputs popup__inputs" novalidate>
+        <input id="place-input" name="placeName" type="text" placeholder="Название " value=""
+          class="form__input popup-card__input-text popup__input-text popup__input" minlength="1" maxlength="30"
+          required />
+        <span class="place-input-error popup__error"></span>
+        <input id="link-input" name="linkName" type="url" placeholder="Ссылка на картинку " value=""
+          class=" form__input popup-card__input-text popup__input-text popup__input" required />
+        <span class="link-input-error popup__error"></span>
         <button aria-label="Сохранить изменения в форме" type="submit"
           class="popup-card__submit-btn popup__submit-btn popup__submit-btn_disabled" disabled>
           Создать
@@ -88,6 +91,7 @@
     </div>
   </div>
   <script src="./scripts/script.js"></script>
+  <script src="./scripts/validate.js"></script>
 </body>
 
 </html>

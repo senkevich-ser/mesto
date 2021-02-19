@@ -50,6 +50,7 @@ document.addEventListener("keydown", function (evt) {
     closePopup(popup);
     closePopup(popupCard);
     closePopup(fotoCard);
+    setSubmitButtonState(false, submitButtonCard);
   }
 });
 
@@ -57,9 +58,13 @@ document.addEventListener("keydown", function (evt) {
 popupCard.addEventListener("click", function (evt) {
   if (evt.target.classList.contains("popup-card__close-cross")) {
     closePopup(popupCard);
+    formAdding.reset();
+    setSubmitButtonState(false, submitButtonCard);
   }
   if (evt.target.classList.contains("popup-card")) {
     closePopup(popupCard);
+    formAdding.reset();
+    setSubmitButtonState(false, submitButtonCard);
   }
 });
 //закрытие попапа с фото через крест и оверлей//
@@ -175,8 +180,7 @@ function submitCardForm(evt) {
   evt.preventDefault();
   closePopup(popupCard);
   initialCard();
-  inputPlace.value = "";
-  inputFoto.value = "";
+  formAdding.reset();
   setSubmitButtonState(false, submitButtonCard);
 }
 //слушатель для отправки формы ДК//
@@ -191,24 +195,3 @@ function handleFormSubmit(evt) {
   closePopup(popup);
 }
 formElements.addEventListener("submit", handleFormSubmit);
-
-//Функция деактивации кнопки "Сохранить/Создать" //
-function setSubmitButtonState(isFormValid, saveButton) {
-  if (isFormValid) {
-    saveButton.removeAttribute("disabled");
-    saveButton.classList.remove("popup__submit-btn_disabled");
-  } else {
-    saveButton.setAttribute("disabled", true);
-    saveButton.classList.add("popup__submit-btn_disabled");
-  }
-}
-
-formEditing.addEventListener("input", function (evt) {
-  const isValid = inputName.value.length > 0 && inputExplorer.value.length > 0;
-  setSubmitButtonState(isValid, submitButton);
-});
-
-formAdding.addEventListener("input", function (evt) {
-  const isValidCard = inputPlace.value.length > 0 && inputFoto.value.length > 0;
-  setSubmitButtonState(isValidCard, submitButtonCard);
-});
