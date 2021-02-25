@@ -50,7 +50,6 @@ document.addEventListener("keydown", function (evt) {
     closePopup(popup);
     closePopup(popupCard);
     closePopup(fotoCard);
-    setSubmitButtonState(false, submitButtonCard);
   }
 });
 
@@ -59,12 +58,10 @@ popupCard.addEventListener("click", function (evt) {
   if (evt.target.classList.contains("popup-card__close-cross")) {
     closePopup(popupCard);
     formAdding.reset();
-    setSubmitButtonState(false, submitButtonCard);
   }
   if (evt.target.classList.contains("popup-card")) {
     closePopup(popupCard);
     formAdding.reset();
-    setSubmitButtonState(false, submitButtonCard);
   }
 });
 //закрытие попапа с фото через крест и оверлей//
@@ -181,7 +178,6 @@ function submitCardForm(evt) {
   closePopup(popupCard);
   initialCard();
   formAdding.reset();
-  setSubmitButtonState(false, submitButtonCard);
 }
 //слушатель для отправки формы ДК//
 
