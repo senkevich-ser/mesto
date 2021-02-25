@@ -29,10 +29,10 @@ const toggleButtonState = (inputList, buttonElement) => {
   if (hasNotValidInput) {
     buttonElement;
     buttonElement.setAttribute("disabled", true);
-    buttonElement.classList.add("popup__submit-btn_disabled");
+    buttonElement.classList.add(inactiveButtonClass);
   } else {
     buttonElement.removeAttribute("disabled");
-    buttonElement.classList.remove("popup__submit-btn_disabled");
+    buttonElement.classList.remove(inactiveButtonClass);
   }
 };
 
@@ -61,15 +61,22 @@ const enableValidation = ({
   formSelector,
   inputSelector,
   submitButtonSelector,
+  inactiveButtonClass,
 }) => {
   const formList = Array.from(document.querySelectorAll(formSelector));
 
   formList.forEach((formElement) => {
-    setEventListeners(formElement, inputSelector, submitButtonSelector);
+    setEventListeners(
+      formElement,
+      inputSelector,
+      submitButtonSelector,
+      inactiveButtonClass
+    );
   });
 };
 enableValidation({
   formSelector: ".popup__inputs",
   inputSelector: ".popup__input-text",
   submitButtonSelector: ".popup__submit-btn",
+  inactiveButtonClass: "popup__button_disabled",
 });
