@@ -27,6 +27,7 @@ const toggleButtonState = (inputList, buttonElement) => {
     (inputElement) => !inputElement.validity.valid
   );
   if (hasNotValidInput) {
+    buttonElement;
     buttonElement.setAttribute("disabled", true);
     buttonElement.classList.add("popup__submit-btn_disabled");
   } else {
@@ -36,15 +37,17 @@ const toggleButtonState = (inputList, buttonElement) => {
 };
 
 //Функция установки слушателей для отмены отправки формы на сервер//
-const setEventListeners = (formElement, inputSelector) => {
+const setEventListeners = (
+  formElement,
+  inputSelector,
+  submitButtonSelector
+) => {
   formElement.addEventListener("submit", (event) => {
     event.preventDefault();
   });
   //Функция получения массива из NODE листа инпутов//
-  const inputList = Array.from(
-    formElement.querySelectorAll(".popup__input-text")
-  );
-  const buttonElement = formElement.querySelector(".popup__submit-btn");
+  const inputList = Array.from(formElement.querySelectorAll(inputSelector));
+  const buttonElement = formElement.querySelector(submitButtonSelector);
 
   inputList.forEach((inputElement) => {
     inputElement.addEventListener("input", (evant) => {
@@ -54,14 +57,19 @@ const setEventListeners = (formElement, inputSelector) => {
   });
 };
 //Функция получения массива из NODE листа форм//
-const enableValidation = ({ formSelector, inputSelector }) => {
+const enableValidation = ({
+  formSelector,
+  inputSelector,
+  submitButtonSelector,
+}) => {
   const formList = Array.from(document.querySelectorAll(formSelector));
 
   formList.forEach((formElement) => {
-    setEventListeners(formElement, inputSelector);
+    setEventListeners(formElement, inputSelector, submitButtonSelector);
   });
 };
 enableValidation({
   formSelector: ".popup__inputs",
   inputSelector: ".popup__input-text",
+  submitButtonSelector: ".popup__submit-btn",
 });
