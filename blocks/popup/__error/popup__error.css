@@ -7,7 +7,6 @@
   color: #ff0000;
   display: none;
 }
-}
 @media (max-width: 570px) {
   .popup__input-text {
     width: 290px;
