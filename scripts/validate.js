@@ -16,11 +16,20 @@ const hideInputError = (formElement, inputElement, inputErrorClass) => {
   errorElement.classList.remove(inputErrorClass);
 };
 
+const getErrorMessage = (inputElement) => {
+  if (inputElement.validity.typeMismatch) {
+    return "Введите адрес сайта";
+  }
+  if (inputElement.validity.valueMissing) {
+    return "Вы пропустили это поле";
+  }
+  return inputElement.validationMessage;
+};
 //Функция проверки валидности инпута//
 const checkInputValidity = (formElement, inputElement, inputErrorClass) => {
   const isInputNotValid = !inputElement.validity.valid;
   if (isInputNotValid) {
-    const errorMessage = inputElement.validationMessage; //текст ошибки//
+    const errorMessage = getErrorMessage(inputElement); //текст ошибки//
     showInputError(formElement, inputElement, errorMessage, inputErrorClass);
   } else {
     hideInputError(formElement, inputElement, inputErrorClass);
