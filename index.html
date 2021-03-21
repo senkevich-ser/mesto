@@ -30,7 +30,7 @@
       <button aria-label="Добавить карточку" type="button" class="lead__button opacity"></button>
     </section>
     <section class="foto-grid" aria-label="Фото красивых мест">
-      <template class="foto-grid__template">
+      <template class="foto-grid__template foto-grid__template_type_default">
         <div class="foto-grid__card">
           <div class="foto-grid__urn"></div>
           <img src="./images/arkhyz.jpg " alt="Foto" class="foto-grid__item" />
@@ -74,7 +74,7 @@
           class="popup-card__input-text popup__input-text" required />
         <span class="link-input-error popup__error"></span>
         <button aria-label="Сохранить изменения в форме" type="submit"
-          class="popup-card__submit-btn popup__submit-btn popup__submit-btn_disabled" disabled>
+          class="popup-card__submit-btn popup__submit-btn">
           Создать
         </button>
       </form>
@@ -87,8 +87,9 @@
       <h2 class="foto-open__name">Новое место</h2>
     </div>
   </div>
-  <script src="./scripts/script.js"></script>
-  <script src="./scripts/validate.js"></script>
+  <script type="module" src="./scripts/index.js"></script>
+  <script type="module" src="./scripts/FormValidator.js"></script>
+  <script type="module" src="./scripts/Card.js"></script>
 </body>
 
 </html>
