@@ -8,6 +8,8 @@ export class Card {
     this._name = data.name;
     this._link = data.link;
     this._cardSelector = cardSelector;
+    /* this._image = document.querySelector(".foto-grid__item");
+    console.log(this._image); */
   }
   //метод возвращения разметки//
   _getTemplate() {
@@ -21,13 +23,11 @@ export class Card {
   generateCard() {
     this._element = this._getTemplate();
     this._setEventListeners();
-    this._element.querySelector(".foto-grid__item").src = this._link;
-    this._element.querySelector(
-      ".foto-grid__name-title"
-    ).textContent = this._name;
-    this._element.querySelector(
-      ".foto-grid__name-title"
-    ).alt = `Фото места ${this._name}`;
+    this._image = this._element.querySelector(".foto-grid__item");
+    this._image.src = this._link;
+    this._place = this._element.querySelector(".foto-grid__name-title");
+    this._place.textContent = this._name;
+    this._image.alt = `Фото места ${this._name}`;
     return this._element;
   }
   //метод открытия попапа с фото//

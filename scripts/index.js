@@ -1,6 +1,7 @@
 import { initialCards } from "./initial-cards.js";
 import { Card } from "./Card.js";
 import FormValidator from "./FormValidator.js";
+import { config } from "./constants.js";
 //ПЕРЕМЕННЫЕ ФОРМЫ РЕДАКТИРОВАНИЯ ПРОФИЛЯ (РП)//
 const openEditProfilePopupBtn = document.querySelector(".lead__pencil"); //кнопка с карандашом// //крест закрытия попапа//
 /* const crossClosePopup = document.querySelector(".popup__close-cross"); */ const leadElementInitial = document.querySelector(
@@ -34,28 +35,18 @@ popups.forEach((popup) => {
   popup.addEventListener("click", (evt) => {
     if (evt.target.classList.contains("popup_opened")) {
       closePopup(popup);
-      formNoActiv();
     }
     if (evt.target.classList.contains("popup__close-cross")) {
       closePopup(popup);
-      formNoActiv();
     }
   });
 });
-
-//функция сброса полей формы и блокировки кнопки submit//
-function formNoActiv() {
-  submitButtonCard.classList.add("popup__submit-btn_disabled");
-  submitButtonCard.disabled = "disabled";
-  formAdding.reset();
-}
 
 //функция обработчик кнопки ESC//
 function closeByEscape(evt) {
   if (evt.key === "Escape") {
     const openedPopup = document.querySelector(".popup_opened"); //Переменная стиля закрытия попапов//
     closePopup(openedPopup);
-    formNoActiv();
   }
 }
 
@@ -68,23 +59,20 @@ function openPopup(popup) {
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
   document.removeEventListener("keydown", closeByEscape);
-  spanList.forEach((errorElement) => {
-    errorElement.classList.remove("popup__error_active");
-  });
 }
 
 //слушатель открытия  формы РП  и вывод предыдущих значений//
 openEditProfilePopupBtn.addEventListener("click", function () {
   openPopup(profilePopup);
+  editFormValidator.disableForm();
   inputName.value = leadElementInitial.textContent;
   inputExplorer.value = leadElementExplorer.textContent;
-  addFormValidator(formEditing);
 });
 
 // слушатель открытия формы ДК//
 openAddCardPopupBtn.addEventListener("click", function () {
   openPopup(popupCard);
-  addFormValidator(formAdding);
+  cardFormValidator.disableForm();
 });
 
 //ДОБАВЛЕНИЕ КАРТОЧЕК//
@@ -115,7 +103,6 @@ function submitCardForm(evt) {
   evt.preventDefault();
   closePopup(popupCard);
   addNewCard();
-  formNoActiv();
 }
 //слушатель для отправки формы ДК//
 
@@ -132,16 +119,7 @@ function handleEditProfileFormSubmit(evt) {
   leadElementExplorer.textContent = inputExplorer.value;
   closePopup(profilePopup);
 }
-
-const config = {
-  formSelector: ".popup__inputs",
-  inputSelector: ".popup__input-text",
-  submitButtonSelector: ".popup__submit-btn",
-  inactiveButtonClass: "popup__submit-btn_disabled",
-  inputErrorClass: "popup__error_active",
-};
-
-function addFormValidator(formElement) {
-  const validatorElement = new FormValidator(config, formElement);
-  validatorElement.enableValidation();
-}
+const editFormValidator = new FormValidator(config, formEditing);
+const cardFormValidator = new FormValidator(config, formAdding);
+editFormValidator.enableValidation();
+cardFormValidator.enableValidation();

@@ -8,6 +8,9 @@ export default class FormValidator {
     this._inputList = this._formElement.querySelectorAll(
       this._config.inputSelector
     );
+    this._spanList = this._formElement.querySelectorAll(
+      this._config.ErrorElement
+    );
   }
   //метод добавления/показа ошибки//
   _showInputError(inputElement, errorMessage) {
@@ -71,5 +74,14 @@ export default class FormValidator {
       evt.preventDefault();
     });
     this._setEventListeners();
+  }
+  //функция сброса полей формы и блокировки кнопки submit//
+  disableForm() {
+    this._buttonElement.classList.add(this._config.inactiveButtonClass);
+    this._buttonElement.disabled = "disabled";
+    this._formElement.reset();
+    this._spanList.forEach((errorElement) => {
+      errorElement.classList.remove(this._config.inputErrorClass);
+    });
   }
 }
