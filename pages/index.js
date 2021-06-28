@@ -1,7 +1,8 @@
-import { initialCards } from "./initial-cards.js";
-import { Card } from "./Card.js";
-import FormValidator from "./FormValidator.js";
-import { config } from "./constants.js";
+import Card from '../components/Card.js';
+import { initialCards, popupElement, popupImage, popupCloseButton, popupElementName } from "../utils/constants.js";
+import FormValidator from "../components/FormValidator.js";
+import { config } from "../utils/config.js";
+import Section from "../components/Section.js";
 //ПЕРЕМЕННЫЕ ФОРМЫ РЕДАКТИРОВАНИЯ ПРОФИЛЯ (РП)//
 const openEditProfilePopupBtn = document.querySelector(".lead__pencil"); //кнопка с карандашом// //крест закрытия попапа//
 /* const crossClosePopup = document.querySelector(".popup__close-cross"); */ const leadElementInitial = document.querySelector(
@@ -29,6 +30,8 @@ const popups = document.querySelectorAll(".popup"); //NODE лист всех п�
 const sectionGrid = document.querySelector(".foto-grid"); //cекция для карточек//
 const templateSelector = ".foto-grid__template_type_default"; //селектор темплейта//
 const spanList = document.querySelectorAll(".popup__error"); //NodeList спанов//
+
+
 
 //закрытие всех форм  через крест и оверлей//
 popups.forEach((popup) => {
@@ -76,26 +79,41 @@ openAddCardPopupBtn.addEventListener("click", function () {
 });
 
 //ДОБАВЛЕНИЕ КАРТОЧЕК//
+//добавление карточек из массива//
 
-//функция генерации карточек //
-function createCard(item, cardSelector) {
-  const card = new Card(item, cardSelector);
-  const cardElement = card.generateCard();
-  return cardElement;
-}
+  const cardOfList = new Section(
+  {
+    data:initialCards,
+    renderer: (item) => {
+      const card = new Card(item, ".foto-grid__template");
+      const cardElement = card.generateCard();
+      cardOfList.addItem(cardElement);
+    },
+  },
+  ".foto-grid"
+);
+cardOfList.renderItems();
+/* cards(initialCards) */
 
-//функция генерации карточек из массива//
-initialCards.forEach((item) => {
-  sectionGrid.prepend(createCard(item, templateSelector));
-});
 
 //функция генерации новой карточки//
 function addNewCard() {
-  const inputText = inputPlace.value;
-  const inputLink = inputFoto.value;
-  sectionGrid.prepend(
-    createCard({ name: inputText, link: inputLink }, templateSelector)
+  let cardData = [{}];
+  cardData.name  = inputPlace.value;
+  cardData.link= inputFoto.value;
+  const cardOfForm = new Section(
+    {
+      data:cardData,
+      renderer: (item) => {
+        const card = new Card(item, ".foto-grid__template");
+        const cardElement = card.generateCard();
+        cardOfForm.addItem(cardElement);
+      },
+    },
+    ".foto-grid"
   );
+  cardOfForm.renderItems();
+  /* cards(initialCards) */  
 }
 
 //функция для отправки формы ДК//

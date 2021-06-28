@@ -1,15 +1,10 @@
-const popupElement = document.querySelector(".foto-open"); //подложка попапа c фото/
-const popupImage = document.querySelector(".foto-open__image"); //элемент увеличенного фото  карточки//
-const popupCloseButton = document.querySelector(".popup__close-cross"); //крест закрытия увеличенного фото//
-const popupElementName = document.querySelector(".foto-open__name"); //элемент названия места  увеличенной карточки//
 
-export class Card {
-  constructor(data, cardSelector) {
-    this._name = data.name;
-    this._link = data.link;
+
+export default class Card {
+  constructor(item, cardSelector) {
+    this._name = item.name;
+    this._link = item.link;
     this._cardSelector = cardSelector;
-    /* this._image = document.querySelector(".foto-grid__item");
-    console.log(this._image); */
   }
   //метод возвращения разметки//
   _getTemplate() {
@@ -23,27 +18,25 @@ export class Card {
   generateCard() {
     this._element = this._getTemplate();
     this._setEventListeners();
-    this._image = this._element.querySelector(".foto-grid__item");
-    this._image.src = this._link;
-    this._place = this._element.querySelector(".foto-grid__name-title");
-    this._place.textContent = this._name;
-    this._image.alt = `Фото места ${this._name}`;
+    this._image = this._element.querySelector(".foto-grid__item").src = this._link;
+    this._place = this._element.querySelector(".foto-grid__name-title").textContent = this._name;
+    this._image = this._element.querySelector(".foto-grid__item").alt = this._name;
     return this._element;
   }
   //метод открытия попапа с фото//
-  _handleOpenFotoPopup() {
+  /* _handleOpenFotoPopup() {
     popupImage.src = this._link;
     popupElementName.textContent = this._name;
     popupElementName.alt = `Фото места ${this._name}`;
     popupElement.classList.add("popup_opened");
     document.addEventListener("keydown", closeByEscape);
-  }
+  } */
 
   //метод закрытия попапа с фото//
-  _handleCloseFotoPopup() {
+  /* _handleCloseFotoPopup() {
     popupElement.classList.remove("popup_opened");
     document.removeEventListener("keydown", closeByEscape);
-  }
+  } */
   //метод удаления карточки//
   _handleDeletUrnButton(evt) {
     const deletUrnButton = evt.target.closest(".foto-grid__card");
@@ -57,11 +50,11 @@ export class Card {
   //СПИСОК СЛУШАТЕЛЕЙ//
   //слушатель открытия попапа с фото//
   _setEventListeners() {
-    this._element
+    /* this._element
       .querySelector(".foto-grid__item")
       .addEventListener("click", () => {
         this._handleOpenFotoPopup();
-      });
+      }); */
 
     //слушатель удаления карточки//
     this._element
