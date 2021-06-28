@@ -81,9 +81,10 @@ openAddCardPopupBtn.addEventListener("click", function () {
 //ДОБАВЛЕНИЕ КАРТОЧЕК//
 //добавление карточек из массива//
 
-  const cardOfList = new Section(
+ function cards(dataCards){
+const cardOfList = new Section(
   {
-    data:initialCards,
+    data:dataCards,
     renderer: (item) => {
       const card = new Card(item, ".foto-grid__template");
       const cardElement = card.generateCard();
@@ -93,27 +94,17 @@ openAddCardPopupBtn.addEventListener("click", function () {
   ".foto-grid"
 );
 cardOfList.renderItems();
-/* cards(initialCards) */
+}
+cards(initialCards)
 
 
 //функция генерации новой карточки//
 function addNewCard() {
   let cardData = [{}];
-  cardData.name  = inputPlace.value;
-  cardData.link= inputFoto.value;
-  const cardOfForm = new Section(
-    {
-      data:cardData,
-      renderer: (item) => {
-        const card = new Card(item, ".foto-grid__template");
-        const cardElement = card.generateCard();
-        cardOfForm.addItem(cardElement);
-      },
-    },
-    ".foto-grid"
-  );
-  cardOfForm.renderItems();
-  /* cards(initialCards) */  
+  cardData[0].name  = inputPlace.value;
+  cardData[0].link= inputFoto.value;
+  cards(cardData)
+  console.log(cardData)
 }
 
 //функция для отправки формы ДК//
