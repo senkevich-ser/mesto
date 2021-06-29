@@ -3,7 +3,7 @@ export default class Section{
     this._renderItems= data;
     this._cardContainer = document.querySelector(containerSelector);
     this._renderer = renderer;
-    console.log(this._renderItems)
+    
   }
 
   addItem(element){
