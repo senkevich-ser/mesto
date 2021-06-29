@@ -28,3 +28,15 @@
     popupElement.classList.remove("popup_opened");
   }
 } */
+
+//закрытие всех форм  через крест и оверлей//
+/* popups.forEach((popup) => {
+  popup.addEventListener("click", (evt) => {
+    if (evt.target.classList.contains("popup_opened")) {
+      closePopup(popup);
+    }
+    if (evt.target.classList.contains("popup__close-cross")) {
+      closePopup(popup);
+    }
+  });
+}); */
