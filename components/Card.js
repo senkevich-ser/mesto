@@ -1,7 +1,5 @@
-
-
 export default class Card {
-  constructor(item, cardSelector,handleCardClick) {
+  constructor(item, cardSelector, handleCardClick) {
     this._name = item.name;
     this._link = item.link;
     this._cardSelector = cardSelector;
@@ -19,12 +17,16 @@ export default class Card {
   generateCard() {
     this._element = this._getTemplate();
     this._setEventListeners();
-    this._image = this._element.querySelector(".foto-grid__item").src = this._link;
-    this._place = this._element.querySelector(".foto-grid__name-title").textContent = this._name;
-    this._image = this._element.querySelector(".foto-grid__item").alt = this._name;
+    this._image = this._element.querySelector(".foto-grid__item").src =
+      this._link;
+    this._place = this._element.querySelector(
+      ".foto-grid__name-title"
+    ).textContent = this._name;
+    this._image = this._element.querySelector(".foto-grid__item").alt =
+      this._name;
     return this._element;
   }
-  
+
   //метод удаления карточки//
   _handleDeletUrnButton(evt) {
     const deletUrnButton = evt.target.closest(".foto-grid__card");
@@ -36,9 +38,8 @@ export default class Card {
   }
 
   //СПИСОК СЛУШАТЕЛЕЙ//
-  
+
   _setEventListeners() {
-    
     //слушатель удаления карточки//
     this._element
       .querySelector(".foto-grid__urn")
@@ -51,6 +52,11 @@ export default class Card {
       .addEventListener("click", (evt) => {
         this._handleAddLike(evt);
       });
+    //слушатель превью карточки//
+    this._element
+      .querySelector(".foto-grid__item")
+      .addEventListener("click", (evt) => {
+        this._handleCardClick(evt);
+      });
   }
 }
-
