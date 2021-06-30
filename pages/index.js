@@ -1,3 +1,4 @@
+import UserInfo from '../components/UserInfo.js';
 import PopupWithForm from "../components/PopupWithForm.js";
 import Card from "../components/Card.js";
 import { initialCards, popupElement } from "../utils/constants.js";
@@ -34,15 +35,21 @@ document.addEventListener("click", (evt) => {
 });
 
 function menagePopups(evt) {
-  /* if (evt.target.classList.contains("lead__pencil")) {
-    const editProfPopup = new PopupWithForm(".popup",(evt,data)=>{
-      evt.preventDefault();
+  if (evt.target.classList.contains("lead__pencil")) {
+    const editProfPopup = new PopupWithForm(".popup",(data)=>{
+      const addUser = new UserInfo('.lead__title','.lead__subtitle');
+      addUser.setUserInfo(data)
+      addUser.getUserInfo()
+      editProfPopup.close()
+      /* console.log(editProfPopup._formValues.initialExplorer)
+      console.log(editProfPopup._formValues.rankExplorer) */
     });
+
     editProfPopup.open();
-  } */
+
+  }
   if (evt.target.classList.contains("lead__button")) {
     const addCardfPopup = new PopupWithForm(".popup-card", (data) => {
-      evt.preventDefault();
       const cardData = [{}];
       cardData[0].name = data.placeName;
       cardData[0].link = data.linkName;
