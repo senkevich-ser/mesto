@@ -73,7 +73,9 @@ export default class FormValidator {
     this._formElement.addEventListener("submit", (evt) => {
       evt.preventDefault();
     });
+    this._setButtonState(this._formElement.checkValidity())
     this._setEventListeners();
+    
   }
   //функция сброса полей формы и блокировки кнопки submit//
   disableForm() {
