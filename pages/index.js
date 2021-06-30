@@ -1,11 +1,11 @@
-import Popup from "../components/Popup.js";
+import PopupWithForm from "../components/PopupWithForm.js";
 import Card from "../components/Card.js";
 import { initialCards, popupElement } from "../utils/constants.js";
 import FormValidator from "../components/FormValidator.js";
 import { config } from "../utils/config.js";
 import Section from "../components/Section.js";
 /* import Popup from '../components/Popup.js'; */
-import PopupWithImage from "../components/popupWithImage.js";
+import PopupWithImage from "../components/PopupWithImage.js";
 //ПЕРЕМЕННЫЕ ФОРМЫ РЕДАКТИРОВАНИЯ ПРОФИЛЯ (РП)//
 const openEditProfilePopupBtn = document.querySelector(".lead__pencil"); //кнопка с карандашом// //крест закрытия попапа//
 /* const crossClosePopup = document.querySelector(".popup__close-cross"); */ const leadElementInitial =
@@ -17,6 +17,9 @@ const inputName = formEditing.elements.initialExplorer; //поле ввода и
 const inputExplorer = formEditing.elements.rankExplorer; //поле ввода звания исследователя//
 const profilePopup = document.querySelector(".profile-popup"); //подложка попапа//
 const editProfileForm = document.querySelector(".popup__inputs"); //поля ввода//
+
+
+
 
 //ПЕРЕМЕННЫЕ ФОРМЫ ДОБАВЛЕНИЯ  КАРТОЧКИ(ДК)//
 const formAdding = document.forms.formCards; //переменная полей формы ДК//
@@ -31,19 +34,26 @@ document.addEventListener("click", (evt) => {
 });
 
 function menagePopups(evt) {
-  if (evt.target.classList.contains("lead__pencil")) {
-    const editProfPopup = new Popup(".popup");
+  /* if (evt.target.classList.contains("lead__pencil")) {
+    const editProfPopup = new PopupWithForm(".popup",(evt,data)=>{
+      evt.preventDefault();
+    });
     editProfPopup.open();
-  }
+  } */
   if (evt.target.classList.contains("lead__button")) {
-    const addCardfPopup = new Popup(".popup-card");
+    const addCardfPopup = new PopupWithForm(".popup-card", (data) => {
+      evt.preventDefault();
+      const cardData = [{}];
+      cardData[0].name = data.placeName;
+      cardData[0].link = data.linkName;
+      cards(cardData)
+      addCardfPopup.close()
+    });
     addCardfPopup.open();
   }
 }
 
-function handleCardClick(data) {
-  
-}
+
 /* 
 //слушатель открытия  формы РП  и вывод предыдущих значений//
 openEditProfilePopupBtn.addEventListener("click", function () {
@@ -67,12 +77,12 @@ function cards(dataCards) {
     {
       data: dataCards,
       renderer: (item) => {
-        const card = new Card(item, ".foto-grid__template",(evt)=>{
-         const popupImage = new PopupWithImage(".foto-open");
-         const data = {};
-         data.name =evt.target.alt;
-         data.link = evt.target.src
-         popupImage.open(data)
+        const card = new Card(item, ".foto-grid__template", (evt) => {
+          const popupImage = new PopupWithImage(".foto-open");
+          const data = {};
+          data.name = evt.target.alt;
+          data.link = evt.target.src
+          popupImage.open(data)
         });
         const cardElement = card.generateCard();
         cardOfList.addItem(cardElement);
@@ -114,6 +124,7 @@ cards(initialCards);
   evt.preventDefault();
   leadElementInitial.textContent = inputName.value;
   leadElementExplorer.textContent = inputExplorer.value;
+  console.log(getInputValues())
   closePopup(profilePopup);
 } */
 const editFormValidator = new FormValidator(config, formEditing);
