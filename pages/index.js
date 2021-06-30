@@ -42,8 +42,7 @@ function menagePopups(evt) {
 }
 
 function handleCardClick(data) {
-  const popupImage = new PopupWithImage(".foto-open");
-  popupImage.open(data);
+  
 }
 /* 
 //слушатель открытия  формы РП  и вывод предыдущих значений//
@@ -68,7 +67,13 @@ function cards(dataCards) {
     {
       data: dataCards,
       renderer: (item) => {
-        const card = new Card(item, ".foto-grid__template");
+        const card = new Card(item, ".foto-grid__template",(evt)=>{
+         const popupImage = new PopupWithImage(".foto-open");
+         const data = {};
+         data.name =evt.target.alt;
+         data.link = evt.target.src
+         popupImage.open(data)
+        });
         const cardElement = card.generateCard();
         cardOfList.addItem(cardElement);
       },
@@ -78,6 +83,8 @@ function cards(dataCards) {
   cardOfList.renderItems();
 }
 cards(initialCards);
+
+
 
 //функция генерации новой карточки//
 /* function addNewCard() {
