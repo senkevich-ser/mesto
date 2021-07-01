@@ -5,7 +5,7 @@ import { initialCards } from "../utils/constants.js";
 import FormValidator from "../components/FormValidator.js";
 import { config } from "../utils/config.js";
 import Section from "../components/Section.js";
-import PopupWithImage from "../components/PopupWithImage.js";
+import PopupWithImage from "../components/popupWithImage.js";
 
 const formEditing = document.forms.formExplorers; //переменная полей формы РП//
 
