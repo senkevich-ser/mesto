@@ -6,10 +6,10 @@ export default class UserInfo {
 
 
   getUserInfo() {
-    this._userData = {};
-    this._userData.name = this._nameTitle.textContent;
-    this._userData.rank = this._rankTitle.textContent;
-    return this._userData;
+    return {
+    name :this._nameTitle.textContent,
+    description: this._rankTitle.textContent,
+    }
   }
 
 

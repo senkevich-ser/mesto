@@ -11,8 +11,12 @@ const formEditing = document.forms.formExplorers; //переменная пол�
 
 const formAdding = document.forms.formCards; //переменная полей формы ДК//
 
+const addUser = new UserInfo(".lead__title", ".lead__subtitle");
+
 //кнопка открытия попапа редактирования профиля
 document.querySelector(".lead__pencil").addEventListener("click", () => {
+  editProfPopup._form.initialExplorer.value = addUser.getUserInfo().name;
+  editProfPopup._form.rankExplorer.value = addUser.getUserInfo().description;
   editProfPopup.open();
 });
 //кнопка отгрытия попапа добавления карточки
@@ -20,14 +24,12 @@ document.querySelector(".lead__button").addEventListener("click", () => {
   addCardfPopup.open();
 });
 
-const editProfPopup = new PopupWithForm(".popup", (data) => {
+const editProfPopup = new PopupWithForm(".profile-popup", (data) => {
+  const{name,description}=data;
   addUser.setUserInfo(data);
   editProfPopup.close();
 });
-const addUser = new UserInfo(".lead__title", ".lead__subtitle");
 
-editProfPopup._form.initialExplorer.value = addUser.getUserInfo().name;
-editProfPopup._form.rankExplorer.value = addUser.getUserInfo().rank;
 
 const addCardfPopup = new PopupWithForm(".popup-card", (data) => {
   const cardData = [{}];
