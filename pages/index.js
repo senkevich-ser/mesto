@@ -18,10 +18,12 @@ document.querySelector(".lead__pencil").addEventListener("click", () => {
   editProfPopup._form.initialExplorer.value = addUser.getUserInfo().name;
   editProfPopup._form.rankExplorer.value = addUser.getUserInfo().description;
   editProfPopup.open();
+  editFormValidator.enableValidation();
 });
 //кнопка отгрытия попапа добавления карточки
 document.querySelector(".lead__button").addEventListener("click", () => {
   addCardfPopup.open();
+  cardFormValidator.enableValidation();
 });
 
 const editProfPopup = new PopupWithForm(".profile-popup", (data) => {
@@ -68,5 +70,5 @@ cards(initialCards);
 
 const editFormValidator = new FormValidator(config, formEditing);
 const cardFormValidator = new FormValidator(config, formAdding);
-editFormValidator.enableValidation();
-cardFormValidator.enableValidation();
+
+
