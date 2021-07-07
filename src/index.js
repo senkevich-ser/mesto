@@ -1,11 +1,12 @@
-import UserInfo from "../components/UserInfo.js";
-import PopupWithForm from "../components/PopupWithForm.js";
-import Card from "../components/Card.js";
-import { initialCards } from "../utils/constants.js";
-import FormValidator from "../components/FormValidator.js";
-import { config } from "../utils/config.js";
-import Section from "../components/Section.js";
-import PopupWithImage from "../components/PopupWithImage.js";
+import './index.css';
+import UserInfo from "./js/components/UserInfo.js";
+import PopupWithForm from "./js/components/PopupWithForm.js";
+import Card from "./js/components/Card.js";
+import { initialCards } from "./js/utils/constants.js";
+import FormValidator from "./js/components/FormValidator.js";
+import { config } from "./js/utils/config.js";
+import Section from "./js/components/Section.js";
+import PopupWithImage from "./js/components/PopupWithImage.js";
 
 const formEditing = document.forms.formExplorers; //переменная полей формы РП//
 
@@ -70,5 +71,3 @@ cards(initialCards);
 
 const editFormValidator = new FormValidator(config, formEditing);
 const cardFormValidator = new FormValidator(config, formAdding);
-
-

@@ -7,7 +7,6 @@
   <meta name="author" content="Сенкевич Сергей" />
   <meta name="description" content="проектная работа №4
   Сергей Сенкевич на Яндекс Практикуме" />
-  <link rel="stylesheet" href="./pages/index.css" />
   <title>Жак-Ив Кусто</title>
 </head>
 
@@ -18,7 +17,7 @@
   <main class="content">
     <section class="lead">
       <div class="lead__titles">
-        <img class="lead__image" src="./images/Jac-Yv.jpg" alt="Фото Жака" />
+        <img class="lead__image" src="<%=require("./images/Jac-Yv.jpg")%>" alt="Фото Жака" />
         <div class="lead__wrapper-titles">
           <div class="lead__wrapper-title">
             <h1 class="lead__title title-cutter">Жак-Ив Кусто</h1>
@@ -33,9 +32,9 @@
       <template class="foto-grid__template foto-grid__template_type_default">
         <div class="foto-grid__card">
           <div class="foto-grid__urn"></div>
-          <img src="./images/arkhyz.jpg " alt="Foto" class="foto-grid__item" />
+          <img src="" alt="Foto" class="foto-grid__item" />
           <div class="foto-grid__name">
-            <h2 class="foto-grid__name-title title-cutter">Карачаево-Черкессия</h2>
+            <h2 class="foto-grid__name-title title-cutter"></h2>
             <button aria-label="Поставить лайк" type="button" class="foto-grid__name-heart"></button>
           </div>
         </div>
@@ -65,7 +64,7 @@
   <div class=" popup-card popup">
     <div class="popup-card__container popup__container">
       <button aria-label="Закрыть попап" type="button" class="popup__close-cross opacity"></button>
-      <h2 class="popup-card__title popup__title">Новое место</h2>
+      <h2 class="popup-card__title popup__title"></h2>
       <form name="formCards" class="popup-card__inputs popup__inputs" novalidate>
         <input id="place-input" name="placeName" type="text" placeholder="Название " value=""
           class="input popup-card__input-text popup__input-text" minlength="1" maxlength="30" required />
@@ -82,12 +81,11 @@
   </div>
   <div class=" foto-open popup">
     <div class=" foto-open__container">
-      <img class="foto-open__image" src="./images/arkhyz.jpg" alt="Foto" />
+      <img class="foto-open__image" src="" alt="Foto" />
       <button aria-label="Закрыть фото" type="button" class=" popup__close-cross opacity"></button>
-      <h2 class="foto-open__name">Новое место</h2>
+      <h2 class="foto-open__name"></h2>
     </div>
   </div>
-  <script type="module" src="./pages/index.js"></script>
 </body>
 
 </html>
