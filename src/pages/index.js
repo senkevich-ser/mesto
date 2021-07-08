@@ -1,12 +1,12 @@
 import './index.css';
-import UserInfo from "./js/components/UserInfo.js";
-import PopupWithForm from "./js/components/PopupWithForm.js";
-import Card from "./js/components/Card.js";
-import { initialCards, editProfBtn,addCardBtn } from "./js/utils/constants.js";
-import FormValidator from "./js/components/FormValidator.js";
-import { config } from "./js/utils/config.js";
-import Section from "./js/components/Section.js";
-import PopupWithImage from "./js/components/PopupWithImage.js";
+import UserInfo from "../js/components/UserInfo.js";
+import PopupWithForm from "../js/components/PopupWithForm.js";
+import Card from "../js/components/Card.js";
+import { initialCards, editProfBtn,addCardBtn } from "../js/utils/constants.js";
+import FormValidator from "../js/components/FormValidator.js";
+import { config } from "../js/utils/config.js";
+import Section from "../js/components/Section.js";
+import PopupWithImage from "../js/components/PopupWithImage.js";
 
 const formEditing = document.forms.formExplorers; //переменная полей формы РП//
 

@@ -10,7 +10,7 @@
   line-height: 22px;
   text-align: center;
 }
-.popup__submit-btn:hover {
+.popup__submit-btn:hover:enabled {
   opacity: 0.8;
   transition-duration: 0.5s;
   cursor: pointer;
