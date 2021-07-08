@@ -2,7 +2,7 @@ import './index.css';
 import UserInfo from "./js/components/UserInfo.js";
 import PopupWithForm from "./js/components/PopupWithForm.js";
 import Card from "./js/components/Card.js";
-import { initialCards } from "./js/utils/constants.js";
+import { initialCards, editProfBtn,addCardBtn } from "./js/utils/constants.js";
 import FormValidator from "./js/components/FormValidator.js";
 import { config } from "./js/utils/config.js";
 import Section from "./js/components/Section.js";
@@ -15,20 +15,19 @@ const formAdding = document.forms.formCards; //переменная полей �
 const addUser = new UserInfo(".lead__title", ".lead__subtitle");
 
 //кнопка открытия попапа редактирования профиля
-document.querySelector(".lead__pencil").addEventListener("click", () => {
-  editProfPopup._form.initialExplorer.value = addUser.getUserInfo().name;
-  editProfPopup._form.rankExplorer.value = addUser.getUserInfo().description;
+  editProfBtn.addEventListener("click", () => {
+  formEditing.elements.initialExplorer.value= addUser.getUserInfo().name;
+  formEditing.elements.rankExplorer.value= addUser.getUserInfo().description;
   editProfPopup.open();
   editFormValidator.enableValidation();
 });
 //кнопка отгрытия попапа добавления карточки
-document.querySelector(".lead__button").addEventListener("click", () => {
+  addCardBtn.addEventListener("click", () => {
   addCardfPopup.open();
   cardFormValidator.enableValidation();
 });
 
 const editProfPopup = new PopupWithForm(".profile-popup", (data) => {
-  const{name,description}=data;
   addUser.setUserInfo(data);
   editProfPopup.close();
 });
