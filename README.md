@@ -22,4 +22,4 @@
 **Методология**
 
 Сайт сверстан с использованием методологии БЭМ.
-https://senkevich-ser.github.io/mesto/index.html
+https://senkevich-ser.github.io/mesto
