@@ -26,4 +26,5 @@ const initialCards = [
 ];
 const editProfBtn = document.querySelector(".lead__pencil");
 const addCardBtn = document.querySelector(".lead__button");
-export { initialCards,editProfBtn,addCardBtn };
+const editAvatarBtn = document.querySelector(".lead__image");
+export { initialCards,editProfBtn,addCardBtn,editAvatarBtn};
