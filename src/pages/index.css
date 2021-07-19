@@ -26,6 +26,7 @@
 @import url('../css/blocks/lead/__wrapper-titles/lead__wrapper-titles.css');
 @import url('../css/blocks/lead/__wrapper-title/lead__wrapper-title.css');
 @import url('../css/blocks/lead/__pencil/lead__pencil.css');
+@import url('../css/blocks/lead/__avatarButton/lead__avatarButton.css');
 @import url('../css/blocks/foto-grid/foto-grid.css');
 @import url('../css/blocks/foto-grid/__urn/foto-grid__urn.css');
 @import url('../css/blocks/foto-grid/__name/foto-grid__name.css');
