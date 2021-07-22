@@ -2,16 +2,20 @@ import './index.css';
 import UserInfo from "../js/components/UserInfo.js";
 import PopupWithForm from "../js/components/PopupWithForm.js";
 import Card from "../js/components/Card.js";
-import { initialCards, editProfBtn,addCardBtn,editAvatarBtn } from "../js/utils/constants.js";
+import { editProfBtn,addCardBtn,editAvatarBtn } from "../js/utils/constants.js";
 import FormValidator from "../js/components/FormValidator.js";
 import { config } from "../js/utils/config.js";
+import { configApi } from "../js/utils/config.js";
 import Section from "../js/components/Section.js";
 import PopupWithImage from "../js/components/PopupWithImage.js";
-import UserAvatar from '../js/components/UserAvatar';
+import UserAvatar from '../js/components/UserAvatar.js';
+import Api from '../js/components/Api.js';
 
 const formEditing = document.forms.formExplorers; //переменная полей формы РП//
 const formAdding = document.forms.formCards; //переменная полей формы ДК//
 const formAvatar = document.forms.formAvatar; //переменная полей формы РА//
+
+const api = new Api(configApi);
 
 const addUser = new UserInfo(".lead__title", ".lead__subtitle");
 const editUserAvatar = new UserAvatar(".lead__image");
@@ -84,7 +88,13 @@ function cards(dataCards) {
   );
   cardOfList.renderItems();
 }
-cards(initialCards);
+api.getCards()
+.then(cardsData =>{
+  cards(cardsData);
+}).catch(err=>{
+  alert("Ошибка при получения данных карточек")
+})
+
 
 const editFormValidator = new FormValidator(config, formEditing);
 const cardFormValidator = new FormValidator(config, formAdding);
