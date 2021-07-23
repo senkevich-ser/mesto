@@ -2,7 +2,7 @@ import './index.css';
 import UserInfo from "../js/components/UserInfo.js";
 import PopupWithForm from "../js/components/PopupWithForm.js";
 import Card from "../js/components/Card.js";
-import { editProfBtn,addCardBtn,editAvatarBtn } from "../js/utils/constants.js";
+import { editProfBtn, addCardBtn, editAvatarBtn } from "../js/utils/constants.js";
 import FormValidator from "../js/components/FormValidator.js";
 import { config } from "../js/utils/config.js";
 import { configApi } from "../js/utils/config.js";
@@ -22,8 +22,8 @@ const editUserAvatar = new UserAvatar(".lead__image");
 
 //кнопка открытия попапа редактирования профиля
 editProfBtn.addEventListener("click", () => {
-  formEditing.elements.initialExplorer.value= addUser.getUserInfo().name;
-  formEditing.elements.rankExplorer.value= addUser.getUserInfo().description;
+  formEditing.elements.initialExplorer.value = addUser.getUserInfo().name;
+  formEditing.elements.rankExplorer.value = addUser.getUserInfo().description;
   editProfile.open();
   editFormValidator.enableValidation();
 });
@@ -35,7 +35,7 @@ editAvatarBtn.addEventListener("click", () => {
 });
 
 //кнопка открытия попапа добавления карточки
-  addCardBtn.addEventListener("click", () => {
+addCardBtn.addEventListener("click", () => {
   addCardfPopup.open();
   cardFormValidator.enableValidation();
 });
@@ -58,9 +58,19 @@ const addCardfPopup = new PopupWithForm(".popup-card", (data) => {
   const cardData = [{}];
   cardData[0].name = data.placeName;
   cardData[0].link = data.linkName;
-  cards(cardData);
+
+  api.addCard(cardData[0])
+    .then(cardData => {
+      cards([cardData])
+    })
+    .catch(err => {
+      console.log("Ошибка при отправлении данных карточек")
+    })
+
   addCardfPopup.close();
 });
+
+
 
 const popupImage = new PopupWithImage(".foto-open");
 
@@ -89,11 +99,11 @@ function cards(dataCards) {
   cardOfList.renderItems();
 }
 api.getCards()
-.then(cardsData =>{
-  cards(cardsData);
-}).catch(err=>{
-  alert("Ошибка при получения данных карточек")
-})
+  .then(cardsData => {
+    cards(cardsData);
+  }).catch(err => {
+    alert("Ошибка при получения данных карточек")
+  })
 
 
 const editFormValidator = new FormValidator(config, formEditing);
