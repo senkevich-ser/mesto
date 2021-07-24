@@ -18,7 +18,7 @@
     <section class="lead">
       <div class="lead__titles">
         <button aria-label="Редактировать аватар" type="button" class="lead__avatarButton opacity"></button>
-        <img class="lead__image" src="<%=require("./images/Jac-Yv.jpg")%>" alt="Фото Жака" />
+        <img class="lead__image" src="" alt="Фото Жака" />
         <div class="lead__wrapper-titles">
           <div class="lead__wrapper-title">
             <h1 class="lead__title title-cutter">Жак-Ив Кусто</h1>
@@ -36,7 +36,10 @@
           <img src="" alt="Foto" class="foto-grid__item" />
           <div class="foto-grid__name">
             <h2 class="foto-grid__name-title title-cutter"></h2>
-            <button aria-label="Поставить лайк" type="button" class="foto-grid__name-heart"></button>
+            <div class="foto-grid__likesBlock">
+             <button aria-label="Поставить лайк" type="button" class="foto-grid__name-heart"></button>
+             <div class="foto-grid__likesQty">0</div>
+            </div>
           </div>
         </div>
       </template>
@@ -50,10 +53,10 @@
       <button aria-label="Закрыть попап" type="button" class="popup__close-cross opacity"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
       <form name="formExplorers" class="popup__inputs" novalidate>
-        <input id="initial-input" name="initialExplorer" type="text" placeholder="Имя Фамилия " value=""
+        <input id="initial-input" name="name" type="text" placeholder="Имя Фамилия " value=""
           class="input popup__input-text" maxlength="40" minlength="2" required />
         <span class="initial-input-error popup__error"></span>
-        <input id="rank-input" name="rankExplorer" type="text" placeholder="Род деятельности " value=""
+        <input id="rank-input" name="about" type="text" placeholder="Род деятельности " value=""
           class="input popup__input-text" maxlength="200" minlength="2" required />
         <span class="rank-input-error popup__error"></span>
         <button aria-label="Сохранить изменения в форме" type="submit" class="popup__submit-btn">
@@ -85,12 +88,24 @@
       <button aria-label="Закрыть попап" type="button" class="popup__close-cross opacity"></button>
       <h2 class="popup-card__title popup__title">Обновить аватар</h2>
       <form name="formAvatar" class="popup-card__inputs popup__inputs" novalidate>
-        <input id="link-input" name="linkAvatar" type="url" placeholder="Ссылка на фото " value=""
+        <input id="link-input" name="avatar" type="url" placeholder="Ссылка на фото " value=""
           class="input popup-card__input-text popup__input-text" required />
         <span class="link-input-error popup__error"></span>
         <button aria-label="Сохранить новый аватар" type="submit" 
           class="popup-card__submit-btn popup__submit-btn" >
-          Создать
+          Сохранить
+        </button>
+      </form>
+    </div>
+  </div>
+  <div class=" popup-deleteCard popup">
+    <div class="popup-card__container popup__container">
+      <button aria-label="Закрыть попап" type="button" class="popup__close-cross opacity"></button>
+      <h2 class="popup-card__title popup__title">Вы уверены?</h2>
+      <form name="formAvatar" class="popup-card__inputs popup__inputs" novalidate>
+        <button aria-label="Сохранить новый аватар" type="submit" 
+          class="popup-card__submit-btn popup__submit-btn" >
+          Да
         </button>
       </form>
     </div>

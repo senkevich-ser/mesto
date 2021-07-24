@@ -15,7 +15,7 @@ export default class UserInfo {
 
 
   setUserInfo(data) {
-    this._nameTitle.textContent = data.initialExplorer;
-    this._rankTitle.textContent = data.rankExplorer;
+    this._nameTitle.textContent = data.name;
+    this._rankTitle.textContent = data.about;
   }
 }

@@ -2,6 +2,7 @@ export default class Card {
   constructor(item, cardSelector, handleCardClick) {
     this._name = item.name;
     this._link = item.link;
+    this._likes = item.likes.length;
     this._cardSelector = cardSelector;
     this._handleCardClick = handleCardClick;
   }
@@ -17,13 +18,15 @@ export default class Card {
   generateCard() {
     this._element = this._getTemplate();
     this._setEventListeners();
-    this._image = this._element.querySelector(".foto-grid__item").src =
+    this._element.querySelector(".foto-grid__item").src =
       this._link;
-    this._place = this._element.querySelector(
+    this._element.querySelector(
       ".foto-grid__name-title"
     ).textContent = this._name;
-    this._image = this._element.querySelector(".foto-grid__item").alt =
+    this._element.querySelector(".foto-grid__item").alt =
       this._name;
+      this._element.querySelector(".foto-grid__likesQty").textContent =
+      this._likes;
     return this._element;
   }
 

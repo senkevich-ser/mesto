@@ -5,6 +5,6 @@ export default class UserAvatar {
 
 
   setUserAvatar(data) {
-    this._avatarEl.src = data.linkAvatar;
+    this._avatarEl.src = data.avatar;
   }
 }

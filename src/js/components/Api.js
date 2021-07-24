@@ -1,44 +1,58 @@
 export default class Api {
-  constructor({ url, token, idGroup }) {
+  constructor({ url, headers }) {
     this._url = url;
-    this._token = token;
-    this._idGroup = idGroup;
+    this._headers = headers;
+
   }
+  getInfoAboutUser() {
+    return fetch(`${this._url}users/me`, {
+      headers: this._headers
+    }).then(this._getResponseValue)
+  }
+
+  setInfoAboutUser(data) {
+    return fetch(`${this._url}users/me`, {
+      method: 'PATCH',
+      headers: this._headers,
+      body: JSON.stringify({
+        name: data.name,
+        about: data.about
+      })
+    }).then(this._getResponseValue)
+  }
+
+  setAvatarUser(data) {
+    return fetch(`${this._url}users/me/avatar`, {
+      method: 'PATCH',
+      headers: this._headers,
+      body: JSON.stringify({
+        avatar: data.avatar,
+      })
+    }).then(this._getResponseValue)
+  }
+
   getCards() {
-    return fetch(`${this._url}/v1/${this._idGroup}/cards`, {
-      headers: {
-        authorization: this._token
-      }
-    }).then(cards => {
-      if (cards.ok) {
-        return cards.json()
-      } return Promise.reject(`Ошибка ${cards.status}при загрузке с сервера`)
-    })
+    return fetch(`${this._url}cards`, {
+      headers: this._headers,
+    }).then(this._getResponseValue)
   }
 
   addCard(data) {
-    return fetch(`${this._url}/v1/${this._idGroup}/cards`, {
+    return fetch(`${this._url}cards`, {
       method: 'POST',
-      headers: {
-        authorization: this._token,
-        'Content-Type': 'application/json',
-      },
+      headers: this._headers,
       body: JSON.stringify({
         name: data.name,
         link: data.link
       })
     })
-      .then(card => {
-        if (card.ok) {
-          return card.json()
-        } return Promise.reject(`Ошибка ${cards.status}при загрузке с сервера`)
-      })
+      .then(this._getResponseValue)
   }
 
   _getResponseValue(response) {
     if (response.ok) {
-      return res.json();
+      return response.json();
     }
-    return Promise.reject(`Ошибка: ${res.status}`);
+    return Promise.reject(`Ошибка: ${response.status}`);
   }
 }
