@@ -2,13 +2,14 @@ import './index.css';
 import UserInfo from "../js/components/UserInfo.js";
 import PopupWithForm from "../js/components/PopupWithForm.js";
 import Card from "../js/components/Card.js";
-import { editProfBtn, addCardBtn, editAvatarBtn, url, token,likesQty } from "../js/utils/constants.js";
+import { editProfBtn, addCardBtn, editAvatarBtn, url, token,ownerID } from "../js/utils/constants.js";
 import FormValidator from "../js/components/FormValidator.js";
 import { config } from "../js/utils/config.js";
 import Section from "../js/components/Section.js";
 import PopupWithImage from "../js/components/PopupWithImage.js";
 import UserAvatar from '../js/components/UserAvatar.js';
 import Api from '../js/components/Api.js';
+import PopupWithSubmit from '../js/components/PopupWithSubmit.js';
 
 
 const formEditing = document.forms.formExplorers; //переменная полей формы РП//
@@ -22,6 +23,9 @@ const api = new Api({
     'Content-Type': 'application/json',
   }
 });
+
+
+
 //полученние данных о пользователе при загрузке страницы//
 api.getInfoAboutUser().then(
   data => {
@@ -31,6 +35,8 @@ api.getInfoAboutUser().then(
 ).catch(err=>{
   console.log('Ошибка получения информации о пользователе')
 })
+
+
 
 
 
@@ -96,7 +102,17 @@ const addCardfPopup = new PopupWithForm(".popup-card", (data) => {
   addCardfPopup.close();
 });
 
-
+//фунукция добавления лайков//
+function handleClickLike(card, data) {
+  const promise = card.isLiked() ? api.dislikeCard(data._id) : api.likeCard(data._id);
+  promise
+      .then((data) => {
+          card.setLike(data);
+      })
+      .catch((err) => {
+          console.log(`${err}`);
+      });
+}
 
 const popupImage = new PopupWithImage(".foto-open");
 
@@ -105,18 +121,38 @@ editAvatar.setEventListeners();
 popupImage.setEventListeners();
 addCardfPopup.setEventListeners();
 
+const popupDeleteCard = new PopupWithSubmit('.popup-deleteCard');
+popupDeleteCard.setEventListeners();
+
+function cardDelete(card) {
+  popupDeleteCard.setFormSubmit(() => {
+        api.deleteCard(card._id)
+            .then((card) => {
+              console.log(card)
+                /* card.cardDelete(); */
+
+                popupDeleteCard.close();
+            })
+            .catch((err) => {
+                console.log(`${err}`);
+            });
+    });
+    popupDeleteCard.open();
+}
+
 //функция создания карточек//
 function cards(dataCards) {
   const cardOfList = new Section(
     {
       data: dataCards,
       renderer: (item) => {
-        const card = new Card(item, ".foto-grid__template", (evt) => {
+        const card = new Card(item,ownerID,".foto-grid__template", (evt) => {
           const data = {};
           data.name = evt.target.alt;
           data.link = evt.target.src;
           popupImage.open(data);
-        });
+        },{handleDeleteCard: () => cardDelete(card),
+          handleClickLike: () => handleClickLike(card,item)});
         const cardElement = card.generateCard();
         cardOfList.addItem(cardElement);
       },
