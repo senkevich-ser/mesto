@@ -1,6 +1,7 @@
 export default class Card {
   constructor(item, ownerID, cardSelector, handleCardClick,
     {handleDeleteCard,handleClickLike}) {
+    this._item = item;
     this._name = item.name;
     this._link = item.link;
     this._likes = item.likes.length;
@@ -39,6 +40,7 @@ export default class Card {
       this._element.querySelector(".foto-grid__likesQty").textContent =
       this._likes;
       this._getView()
+      this.setLike(this._item)
     return this._element;
   }
   //метод удаления карточки//

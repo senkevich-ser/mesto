@@ -44,9 +44,6 @@ api.getInfoAboutUser().then(
 
 
 
-
-
-
 const addUser = new UserInfo(".lead__title", ".lead__subtitle");
 
 const editUserAvatar = new UserAvatar(".lead__image");
@@ -131,13 +128,10 @@ const popupDeleteCard = new PopupWithSubmit('.popup-deleteCard');
 popupDeleteCard.setEventListeners();
 
 function cardDelete(card) {
-  console.log(card)
   popupDeleteCard.setFormSubmit(() => {
-    api.deleteCard(card.item._id)
+    api.deleteCard(card._item._id)
       .then(() => {
-
-        /* card.cardDelete(); */
-
+        card.cardDelete();
         popupDeleteCard.close();
       })
       .catch((err) => {
