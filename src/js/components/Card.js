@@ -78,8 +78,8 @@ setLike(data) {
     //слушатель превью карточки//
     this._element
       .querySelector(".foto-grid__item")
-      .addEventListener("click", (evt) => {
-        this._handleCardClick(evt);
+      .addEventListener("click", () => {
+        this._handleCardClick(this._name,this._link);
       });
   }
 }
