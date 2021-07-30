@@ -2,7 +2,7 @@ import './index.css';
 import UserInfo from "../js/components/UserInfo.js";
 import PopupWithForm from "../js/components/PopupWithForm.js";
 import Card from "../js/components/Card.js";
-import { editProfBtn, addCardBtn, editAvatarBtn, url, token} from "../js/utils/constants.js";
+import { editProfBtn, addCardBtn, editAvatarBtn, url, token, savedSubmits } from "../js/utils/constants.js";
 import FormValidator from "../js/components/FormValidator.js";
 import { config } from "../js/utils/config.js";
 import Section from "../js/components/Section.js";
@@ -70,20 +70,33 @@ addCardBtn.addEventListener("click", () => {
 
 //редактирование автара//
 const editAvatar = new PopupWithForm(".popup-avatar", (data) => {
+  viewLoading(true)
   api.setAvatarUser(data)
-    .then(res => {
-      console.log(res)
+    .then(() => {
+      editUserAvatar.setUserAvatar(data);
+    }).then(() => {
+      editAvatar.close();
+    }).catch(err => {
+      console.log("Ошибка при отправлении данных аватара")
+    }).finally(() => {
+      viewLoading(false);
     })
-  editUserAvatar.setUserAvatar(data);
-  editAvatar.close();
+
 });
 //редактирование профиля//
 const editProfile = new PopupWithForm(".profile-popup", (data) => {
+  viewLoading(true)
   api.setInfoAboutUser(data)
     .then(res => {
       addUser.setUserInfo(res);
+    }).then(() => {
+      editProfile.close();
+    }).catch(err => {
+      console.log("Ошибка при отправлении данных профиля")
+    }).finally(() => {
+      viewLoading(false);
     })
-  editProfile.close();
+
 });
 
 
@@ -93,16 +106,18 @@ const addCardfPopup = new PopupWithForm(".popup-card", (data) => {
   const cardData = [{}];
   cardData[0].name = data.placeName;
   cardData[0].link = data.linkName;
-
+  viewLoading(true)
   api.addCard(cardData[0])
     .then(cardData => {
       cards([cardData])
+    }).then(() => {
+      addCardfPopup.close();
     })
     .catch(err => {
       console.log("Ошибка при отправлении данных карточек")
+    }).finally(() => {
+      viewLoading(false);
     })
-
-  addCardfPopup.close();
 });
 
 //фунукция добавления лайков//
@@ -139,6 +154,19 @@ function cardDelete(card) {
       });
   });
   popupDeleteCard.open();
+}
+
+//функция вида кнопки сабмита при загрузке данных//
+function viewLoading(isLoading) {
+  if (isLoading) {
+    Array.from(savedSubmits).forEach((submit) => {
+      submit.textContent = "Сохранение...";
+    })
+  } else {
+    Array.from(savedSubmits).forEach((submit) => {
+      submit.textContent = "Сохранить";
+    })
+  }
 }
 
 //функция создания карточек//
