@@ -18,7 +18,7 @@
     <section class="lead">
       <div class="lead__titles">
         <button aria-label="Редактировать аватар" type="button" class="lead__avatarButton opacity"></button>
-        <img class="lead__image" src="" alt="Фото Жака" />
+        <img class="lead__image" src="#" alt="Фото Жака" />
         <div class="lead__wrapper-titles">
           <div class="lead__wrapper-title">
             <h1 class="lead__title title-cutter">Жак-Ив Кусто</h1>
@@ -33,7 +33,7 @@
       <template class="foto-grid__template foto-grid__template_type_default">
         <div class="foto-grid__card">
           <div class="foto-grid__urn"></div>
-          <img src="" alt="Foto" class="foto-grid__item" />
+          <img src="#" alt="Foto" class="foto-grid__item" />
           <div class="foto-grid__name">
             <h2 class="foto-grid__name-title title-cutter"></h2>
             <div class="foto-grid__likesBlock">
@@ -88,9 +88,9 @@
       <button aria-label="Закрыть попап" type="button" class="popup__close-cross opacity"></button>
       <h2 class="popup-card__title popup__title">Обновить аватар</h2>
       <form name="formAvatar" class="popup-card__inputs popup__inputs" novalidate>
-        <input id="link-input" name="avatar" type="url" placeholder="Ссылка на фото " value=""
+        <input id="avatar-input" name="avatar" type="url" placeholder="Ссылка на фото " value=""
           class="input popup-card__input-text popup__input-text" required />
-        <span class="link-input-error popup__error"></span>
+        <span class="avatar-input-error popup__error"></span>
         <button aria-label="Сохранить новый аватар" type="submit" 
           class="popup-card__submit-btn popup__submit-btn popup__saved-btn" >
           Сохранить
@@ -112,9 +112,9 @@
   </div>
   <div class=" foto-open popup">
     <div class=" foto-open__container">
-      <img class="foto-open__image" src="" alt="Foto" />
+      <img class="foto-open__image" src="#" alt="Foto" />
       <button aria-label="Закрыть фото" type="button" class=" popup__close-cross opacity"></button>
-      <h2 class="foto-open__name"></h2>
+      <h2 class="foto-open__name">Место</h2>
     </div>
   </div>
 </body>

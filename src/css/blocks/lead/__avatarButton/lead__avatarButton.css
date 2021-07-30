@@ -1,7 +1,7 @@
-.lead__avatarButton{
+.lead__avatarButton {
   width: 120px;
   height: 120px;
-  border-radius: 50%; 
+  border-radius: 50%;
   background-image: url(../../../../images/Vector@1.svg);
   background-size: 30%;
   background-position: center;
