@@ -34,27 +34,27 @@ const addUser = new UserInfo(".lead__title", ".lead__subtitle");
 
 //кнопка открытия попапа редактирования профиля
 editProfBtn.addEventListener("click", () => {
+  editFormValidator.disableForm();
   formEditing.elements.name.value = addUser.getUserInfo().name;
   formEditing.elements.about.value = addUser.getUserInfo().description;
   editProfile.open();
-  editFormValidator.enableValidation();
 });
 
 //кнопка открытия попапа редактирования аватара
 editAvatarBtn.addEventListener("click", () => {
+  avatarFormValidator.disableForm();
   editAvatar.open();
-  avatarFormValidator.enableValidation();
 });
 
 //кнопка открытия попапа добавления карточки
 addCardBtn.addEventListener("click", () => {
+  cardFormValidator.disableForm();
   addCardfPopup.open();
-  cardFormValidator.enableValidation();
 });
 
 //редактирование автара//
 const editAvatar = new PopupWithForm(".popup-avatar", (data) => {
-  viewLoading(true);
+  viewLoading(true, editAvatar);
   api
     .setAvatarUser(data)
     .then((data) => {
@@ -67,12 +67,12 @@ const editAvatar = new PopupWithForm(".popup-avatar", (data) => {
       console.log("Ошибка при отправлении данных аватара");
     })
     .finally(() => {
-      viewLoading(false);
+      viewLoading(false, editAvatar);
     });
 });
 //редактирование профиля//
 const editProfile = new PopupWithForm(".profile-popup", (data) => {
-  viewLoading(true);
+  viewLoading(true, editProfile);
   api
     .setInfoAboutUser(data)
     .then((res) => {
@@ -85,16 +85,16 @@ const editProfile = new PopupWithForm(".profile-popup", (data) => {
       console.log("Ошибка при отправлении данных профиля");
     })
     .finally(() => {
-      viewLoading(false);
+      viewLoading(false, editProfile);
     });
 });
 
 //добавление карточки через попап//
 const addCardfPopup = new PopupWithForm(".popup-card", (data) => {
+  viewLoading(true, addCardfPopup);
   const cardData = [{}];
   cardData[0].name = data.placeName;
   cardData[0].link = data.linkName;
-  viewLoading(true);
   api
     .addCard(cardData[0])
     .then((cardData) => {
@@ -107,7 +107,7 @@ const addCardfPopup = new PopupWithForm(".popup-card", (data) => {
       console.log("Ошибка при отправлении данных карточек");
     })
     .finally(() => {
-      viewLoading(false);
+      viewLoading(false, addCardfPopup);
     });
 });
 
@@ -151,15 +151,12 @@ function cardDelete(card) {
 }
 
 //функция вида кнопки сабмита при загрузке данных//
-function viewLoading(isLoading) {
+function viewLoading(isLoading, form) {
   if (isLoading) {
-    Array.from(savedSubmits).forEach((submit) => {
-      submit.textContent = "Сохранение...";
-    });
+    form._form.querySelector(".popup__submit-btn").textContent =
+      "Сохранение...";
   } else {
-    Array.from(savedSubmits).forEach((submit) => {
-      submit.textContent = "Сохранить";
-    });
+    form._form.querySelector(".popup__submit-btn").textContent = "Сохранить";
   }
 }
 let currentUserId;
@@ -189,10 +186,14 @@ const cardOfList = new Section(
 
 //валидация формы редактирования профиля//
 const editFormValidator = new FormValidator(config, formEditing);
+editFormValidator.enableValidation();
+
 //валидация формы добавления карточки//
 const cardFormValidator = new FormValidator(config, formAdding);
+cardFormValidator.enableValidation();
 //валидация формы редактирования аватара//
 const avatarFormValidator = new FormValidator(config, formAvatar);
+avatarFormValidator.enableValidation();
 
 //получение персональных данных с сервера и массива карточек
 Promise.all([api.getCards(), api.getInfoAboutUser()])
