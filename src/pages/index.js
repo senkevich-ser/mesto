@@ -186,7 +186,6 @@ function viewLoading(isLoading) {
 function cards(dataCards) {
   const cardOfList = new Section(
     {
-      data: dataCards,
       renderer: (item) => {
         const card = new Card({
           item: item,
@@ -204,7 +203,7 @@ function cards(dataCards) {
     },
     ".foto-grid"
   );
-  cardOfList.renderItems();
+  cardOfList.renderItems(dataCards);
 }
 //получение данных первоначальных карточек с сервера//
 api
