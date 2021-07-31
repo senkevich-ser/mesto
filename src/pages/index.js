@@ -9,12 +9,12 @@ import {
   url,
   token,
   savedSubmits,
+  avatarImg,
 } from "../js/utils/constants.js";
 import FormValidator from "../js/components/FormValidator.js";
 import { config } from "../js/utils/config.js";
 import Section from "../js/components/Section.js";
 import PopupWithImage from "../js/components/PopupWithImage.js";
-import UserAvatar from "../js/components/UserAvatar.js";
 import Api from "../js/components/Api.js";
 import PopupWithSubmit from "../js/components/PopupWithSubmit.js";
 
@@ -30,26 +30,7 @@ const api = new Api({
   },
 });
 
-let userData;
-
-//полученние данных о пользователе при загрузке страницы//
-api
-  .getInfoAboutUser()
-  .then((data) => {
-    editUserAvatar.setUserAvatar(data);
-    addUser.setUserInfo(data);
-    return data;
-  })
-  .then((data) => {
-    userData = data;
-  })
-  .catch((err) => {
-    console.log("Ошибка получения информации о пользователе");
-  });
-
 const addUser = new UserInfo(".lead__title", ".lead__subtitle");
-
-const editUserAvatar = new UserAvatar(".lead__image");
 
 //кнопка открытия попапа редактирования профиля
 editProfBtn.addEventListener("click", () => {
@@ -76,8 +57,8 @@ const editAvatar = new PopupWithForm(".popup-avatar", (data) => {
   viewLoading(true);
   api
     .setAvatarUser(data)
-    .then(() => {
-      editUserAvatar.setUserAvatar(data);
+    .then((data) => {
+      avatarImg.src = data.avatar;
     })
     .then(() => {
       editAvatar.close();
@@ -117,7 +98,7 @@ const addCardfPopup = new PopupWithForm(".popup-card", (data) => {
   api
     .addCard(cardData[0])
     .then((cardData) => {
-      cards([cardData]);
+      cardOfList.addItem(createCard(cardData));
     })
     .then(() => {
       addCardfPopup.close();
@@ -181,18 +162,18 @@ function viewLoading(isLoading) {
     });
   }
 }
-
+let currentUserId;
 //функция создания карточек//
 function createCard(dataCard) {
   const card = new Card({
     item: dataCard,
-    ownerID: userData._id,
+    ownerID: currentUserId,
     cardSelector: ".foto-grid__template",
     handleClickLike: (name, link) => {
       popupImage.open(name, link);
     },
     handleDeleteCard: () => cardDelete(card),
-    handleClickLike: () => handleClickLike(card, item),
+    handleClickLike: () => handleClickLike(card, dataCard),
   });
   return card.generateCard();
 }
@@ -206,19 +187,21 @@ const cardOfList = new Section(
   ".foto-grid"
 );
 
-//получение данных первоначальных карточек с сервера//
-api
-  .getCards()
-  .then((cardsData) => {
-    cardOfList.renderItems(cardsData);
-  })
-  .catch((err) => {
-    console.log("Ошибка при получения данных карточек");
-  });
-
 //валидация формы редактирования профиля//
 const editFormValidator = new FormValidator(config, formEditing);
 //валидация формы добавления карточки//
 const cardFormValidator = new FormValidator(config, formAdding);
 //валидация формы редактирования аватара//
 const avatarFormValidator = new FormValidator(config, formAvatar);
+
+//получение персональных данных с сервера и массива карточек
+Promise.all([api.getCards(), api.getInfoAboutUser()])
+  .then(([cards, userData]) => {
+    addUser.setUserInfo(userData);
+    avatarImg.src = userData.avatar;
+    currentUserId = userData._id;
+    cardOfList.renderItems(cards);
+  })
+  .catch((err) => {
+    console.log(`${err}`);
+  });
