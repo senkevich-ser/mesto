@@ -54,6 +54,7 @@ addCardBtn.addEventListener("click", () => {
 
 //редактирование автара//
 const editAvatar = new PopupWithForm(".popup-avatar", (data) => {
+  console.log(data)
   editAvatar.renderLoading(true);
   api
     .setAvatarUser(data)
@@ -92,11 +93,11 @@ const editProfile = new PopupWithForm(".profile-popup", (data) => {
 //добавление карточки через попап//
 const addCardfPopup = new PopupWithForm(".popup-card", (data) => {
   addCardfPopup.renderLoading(true);
-  const cardData = [{}];
-  cardData[0].name = data.placeName;
-  cardData[0].link = data.linkName;
+  const cardData = {};
+  cardData.name = data.placeName;
+  cardData.link = data.linkName;
   api
-    .addCard(cardData[0])
+    .addCard(cardData)
     .then((cardData) => {
       cardOfList.addItem(createCard(cardData));
     })
@@ -190,7 +191,8 @@ avatarFormValidator.enableValidation();
 Promise.all([api.getCards(), api.getInfoAboutUser()])
   .then(([cards, userData]) => {
     addUser.setUserInfo(userData);
-    currentUserId = userData._id;
+    addUser.setAvatar(userData);
+    currentUserId = addUser.setId(userData);
     cardOfList.renderItems(cards);
   })
   .catch((err) => {
