@@ -183,33 +183,34 @@ function viewLoading(isLoading) {
 }
 
 //функция создания карточек//
-function cards(dataCards) {
-  const cardOfList = new Section(
-    {
-      renderer: (item) => {
-        const card = new Card({
-          item: item,
-          ownerID: userData._id,
-          cardSelector: ".foto-grid__template",
-          handleClickLike: (name, link) => {
-            popupImage.open(name, link);
-          },
-          handleDeleteCard: () => cardDelete(card),
-          handleClickLike: () => handleClickLike(card, item),
-        });
-        const cardElement = card.generateCard();
-        cardOfList.addItem(cardElement);
-      },
+function createCard(dataCard) {
+  const card = new Card({
+    item: dataCard,
+    ownerID: userData._id,
+    cardSelector: ".foto-grid__template",
+    handleClickLike: (name, link) => {
+      popupImage.open(name, link);
     },
-    ".foto-grid"
-  );
-  cardOfList.renderItems(dataCards);
+    handleDeleteCard: () => cardDelete(card),
+    handleClickLike: () => handleClickLike(card, item),
+  });
+  return card.generateCard();
 }
+
+const cardOfList = new Section(
+  {
+    renderer: (item) => {
+      cardOfList.addItem(createCard(item));
+    },
+  },
+  ".foto-grid"
+);
+
 //получение данных первоначальных карточек с сервера//
 api
   .getCards()
   .then((cardsData) => {
-    cards(cardsData);
+    cardOfList.renderItems(cardsData);
   })
   .catch((err) => {
     console.log("Ошибка при получения данных карточек");
