@@ -54,12 +54,11 @@ addCardBtn.addEventListener("click", () => {
 
 //редактирование автара//
 const editAvatar = new PopupWithForm(".popup-avatar", (data) => {
-  console.log(data)
   editAvatar.renderLoading(true);
   api
     .setAvatarUser(data)
     .then((data) => {
-      avatarImg.src = data.avatar;
+      addUser.setAvatar(data);
     })
     .then(() => {
       editAvatar.close();
